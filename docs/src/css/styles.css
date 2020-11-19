@@ -1,14 +1,136 @@
 /* DOM */
-html, body {
 
+html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
 }
 
 /* CLASS */
 
 /* ID */
 
+#board {
+    width:88.4vw;
+    height:100vh;
+}
+
+#board div {
+    background: pink;
+}
+
+#sideBar {    
+    left:88.5vw;
+    width: 11.5vw;
+    height: 100vh;
+    text-align: center;
+}
+
+#sideBar p {
+    cursor: grab;
+}
+
 /* MULTI */
+
+#sideBar,#board {
+    position: absolute;
+    background: white;
+
+}
 
 /* KEYFRAMES */
 
 /* MEDIA QUERIES */
+
+/* 600px and down */
+@media only screen and (max-width: 600px) {
+    /* DOM */
+
+    /* CLASS */
+
+    /* ID */
+
+    /* MULTI */
+
+    /* KEYFRAMES */
+
+    /* MEDIA QUERIES */
+
+    /* 600px and down */
+}
+
+
+
+/* 600px and up */
+@media only screen and (min-width: 600px) {
+    /* DOM */
+
+    /* CLASS */
+
+    /* ID */
+
+    /* MULTI */
+
+    /* KEYFRAMES */
+
+    /* MEDIA QUERIES */
+
+    /* 600px and down */
+}
+
+
+
+/* 768px and up */
+@media only screen and (min-width: 768px) {
+    /* DOM */
+
+    /* CLASS */
+
+    /* ID */
+
+    /* MULTI */
+
+    /* KEYFRAMES */
+
+    /* MEDIA QUERIES */
+
+    /* 600px and down */
+}
+
+
+
+/* 992px and up */
+@media only screen and (min-width: 992px) {
+    /* DOM */
+
+    /* CLASS */
+
+    /* ID */
+
+    /* MULTI */
+
+    /* KEYFRAMES */
+
+    /* MEDIA QUERIES */
+
+    /* 600px and down */
+}
+
+
+
+/* 1200px and up */
+@media only screen and (min-width: 1200px) {
+    /* DOM */
+
+    /* CLASS */
+
+    /* ID */
+
+    /* MULTI */
+
+    /* KEYFRAMES */
+
+    /* MEDIA QUERIES */
+
+    /* 600px and down */
+}
