@@ -17,8 +17,9 @@ html, body {
 
 #board div {
     background: pink;
-    height: 5vw;
+    line-height: 5vw;
     width: 5vw;
+    text-align: center;
 }
 
 #sideBar {    
@@ -26,10 +27,16 @@ html, body {
     width: 11.5vw;
     height: 100vh;
     text-align: center;
+    overflow-y: auto;
 }
 
-#sideBar p {
+#sideBar div {
     cursor: grab;
+    transition: 1s all;
+    line-height: 5vw;
+    width: 5vw;
+    margin: 10px 25%;
+    text-align: center;
 }
 
 /* MULTI */

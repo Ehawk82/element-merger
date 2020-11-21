@@ -21,7 +21,7 @@ const appBuild = (eMD) => {
 
     for (var i = 0; i < eMD.kObj.length; i++) {
         /*this loop creates elements from an array in local storage*/
-        var thingy = createEle("p");
+        var thingy = createEle("div");
 
         thingy.innerHTML = eMD.kObj[i];
         thingy.style.cursor = "grab";
@@ -70,13 +70,19 @@ const drop = (ev) => {
     
     if (newItem.parentNode.id != "board") {
         var eMD = parseLS("elementMergerData");
-        var combination = newItem.parentNode.className + newItem.className;
+        var combination = newItem.parentNode.className + newItem.className,
+            combo2 = newItem.className + newItem.parentNode.className;
+
         newItem.parentNode.remove();
         for (var i = 0; i < eMD.unkObj.length; i++) {
 
-            if(combination === eMD.unkObj[i]){
+            if(combination === eMD.unkObj[i] || combo2 === eMD.unkObj[i]){
                 var alterItem = createEle("div");
-
+                
+                console.log(combo2);
+                console.log(combination);
+                    
+                
                 alterItem.innerHTML = combination;
                 alterItem.style.cursor = "grab";
                 alterItem.className = combination;
@@ -89,7 +95,6 @@ const drop = (ev) => {
                 alterItem.draggable = true;
 
                 ev.preventDefault();
-                
                 
                 Array.prototype.remove = function() {
                     var what, a = arguments, L = a.length, ax;
@@ -112,9 +117,10 @@ const drop = (ev) => {
 
                 saveLS("elementMergerData",eMD);
 
-                var newKey = createEle("p");
+                var newKey = createEle("div");
 
                 newKey.innerHTML = combination;
+                newKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
                 newKey.style.cursor = "grab";
                 newKey.className = combination;
                 newKey.setAttribute("data-index", 1);
@@ -126,7 +132,9 @@ const drop = (ev) => {
 
                 board.appendChild(alterItem);
 
-                
+                setTimeout(function(){
+                    newKey.style.backgroundColor = "white";
+                },100);
             }
         }
         
