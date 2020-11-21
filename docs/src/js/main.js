@@ -2,7 +2,11 @@ let globalFile;
 
 const init = () => {
     //todo: initialize local storage object
-    saveLS("elementMergerData", userdata);
+    var eMD = parseLS("elementMergerData");
+
+    if (!eMD || eMD === null) {
+        saveLS("elementMergerData", userdata);
+    }
     var eMD = parseLS("elementMergerData");
     appBuild(eMD);
 };
@@ -17,8 +21,7 @@ const appBuild = (eMD) => {
 
     for (var i = 0; i < eMD.kObj.length; i++) {
         /*this loop creates elements from an array in local storage*/
-        var thingy = createEle("p"),
-        ev;
+        var thingy = createEle("p");
 
         thingy.innerHTML = eMD.kObj[i];
         thingy.style.cursor = "grab";
@@ -42,9 +45,7 @@ const drag = (ev) => {
 
     for (var i = 0; i < myItem.length; i++) {
         if (myItem[i].parentNode.id === "board") {
-            if (i < myItem.length) {
-
-            }
+           // console.log(myItem[i]);
         }
     }
 };
@@ -68,25 +69,67 @@ const drop = (ev) => {
     ev.target.appendChild(newItem);
     
     if (newItem.parentNode.id != "board") {
+        var eMD = parseLS("elementMergerData");
         var combination = newItem.parentNode.className + newItem.className;
         newItem.parentNode.remove();
+        for (var i = 0; i < eMD.unkObj.length; i++) {
 
-        var alterItem = createEle("div");
+            if(combination === eMD.unkObj[i]){
+                var alterItem = createEle("div");
 
-        alterItem.innerHTML = combination;
-        alterItem.style.cursor = "grab";
-        alterItem.className = globalFile;
-        alterItem.style.position = "absolute";
-        alterItem.style.left = ev.x + "px";
-        alterItem.style.top = ev.y + "px";
+                alterItem.innerHTML = combination;
+                alterItem.style.cursor = "grab";
+                alterItem.className = combination;
+                alterItem.style.position = "absolute";
+                alterItem.style.left = ev.x + "px";
+                alterItem.style.top = ev.y + "px";
 
-        alterItem.ondrag = (event) => drag(event);
+                alterItem.ondrag = (event) => drag(event);
 
-        alterItem.draggable = true;
+                alterItem.draggable = true;
 
-        ev.preventDefault();
+                ev.preventDefault();
+                
+                
+                Array.prototype.remove = function() {
+                    var what, a = arguments, L = a.length, ax;
+                    while (L && this.length) {
+                        what = a[--L];
+                        while ((ax = this.indexOf(what)) !== -1) {
+                            this.splice(ax, 1);
+                        }
+                    }
+                    return this;
+                };
 
-        board.appendChild(alterItem);
+                var ary = eMD.unkObj;
+
+                ary.remove(combination);
+
+                eMD.kObj.push(combination);
+
+                eMD.unkObj = ary;
+
+                saveLS("elementMergerData",eMD);
+
+                var newKey = createEle("p");
+
+                newKey.innerHTML = combination;
+                newKey.style.cursor = "grab";
+                newKey.className = combination;
+                newKey.setAttribute("data-index", 1);
+                newKey.ondrag = (event) => drag(event);
+
+                newKey.draggable = true;
+
+                sideBar.append(newKey);
+
+                board.appendChild(alterItem);
+
+                
+            }
+        }
+        
     }
 };
 

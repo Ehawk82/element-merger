@@ -17,6 +17,8 @@ html, body {
 
 #board div {
     background: pink;
+    height: 5vw;
+    width: 5vw;
 }
 
 #sideBar {    

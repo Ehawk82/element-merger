@@ -1,6 +1,6 @@
 var knownObjects = ["a","b","c","d"];
 
-var unknownObjects = ["e","f","g","h","i","j","k","l"];
+var unknownObjects = ["aa","ab","ac","ad","bb","bc","bd","cc","cd","dd"];
 
 var userdata = {
 	kObj: knownObjects,
