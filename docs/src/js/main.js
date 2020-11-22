@@ -71,18 +71,20 @@ const drop = (ev) => {
     if (newItem.parentNode.id != "board") {
         var eMD = parseLS("elementMergerData");
         var combination = newItem.parentNode.className + newItem.className,
-            combo2 = newItem.className + newItem.parentNode.className;
+            comboMixed = newItem.className + newItem.parentNode.className;
 
         newItem.parentNode.remove();
+
         for (var i = 0; i < eMD.unkObj.length; i++) {
 
-            if(combination === eMD.unkObj[i] || combo2 === eMD.unkObj[i]){
-                var alterItem = createEle("div");
-                
-                console.log(combo2);
-                console.log(combination);
+            if(combination === eMD.unkObj[i] || comboMixed === eMD.unkObj[i]){
+                if (comboMixed != eMD.unkObj[i]) {
                     
-                
+                } else {
+                    combination = comboMixed;
+                }
+                var alterItem = createEle("div");
+                    
                 alterItem.innerHTML = combination;
                 alterItem.style.cursor = "grab";
                 alterItem.className = combination;
@@ -134,11 +136,19 @@ const drop = (ev) => {
 
                 setTimeout(function(){
                     newKey.style.backgroundColor = "white";
+                    //if (true) {}
+                    if(eMD.unkObj.length === 0){
+                        completedAlert();
+                    };
                 },100);
             }
         }
         
     }
+};
+
+const completedAlert = () => {
+    alert("you found every recipe!");
 };
 
 window.onload = function () {
