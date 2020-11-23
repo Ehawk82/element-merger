@@ -26,7 +26,6 @@ const appBuild = (eMD) => {
         thingy.innerHTML = eMD.kObj[i];
         thingy.style.cursor = "grab";
         thingy.className = eMD.kObj[i];
-        thingy.setAttribute("data-index", 1);
         thingy.ondrag = (event) => drag(event);
 
         thingy.draggable = true;
@@ -42,12 +41,6 @@ const allowDrop = (ev) => {
 const drag = (ev) => {
     globalFile = ev.target.className;
     var myItem = byClass(globalFile);
-
-    for (var i = 0; i < myItem.length; i++) {
-        if (myItem[i].parentNode.id === "board") {
-           // console.log(myItem[i]);
-        }
-    }
 };
 
 const drop = (ev) => {
@@ -124,8 +117,8 @@ const drop = (ev) => {
                 newKey.innerHTML = combination;
                 newKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
                 newKey.style.cursor = "grab";
+                newKey.style.opacity = "0.2";
                 newKey.className = combination;
-                newKey.setAttribute("data-index", 1);
                 newKey.ondrag = (event) => drag(event);
 
                 newKey.draggable = true;
@@ -134,17 +127,105 @@ const drop = (ev) => {
 
                 board.appendChild(alterItem);
 
+                if (eMD.kObj.length === 14) {
+                    add_F();
+                }
+
+                if (eMD.kObj.length === 20) {
+                    add_G();
+                }
+
+                if (eMD.kObj.length === 27) {
+                    add_H();
+                }
+
                 setTimeout(function(){
+                    newKey.style.opacity = "1";
+
                     newKey.style.backgroundColor = "white";
-                    //if (true) {}
+                    
                     if(eMD.unkObj.length === 0){
                         completedAlert();
                     };
                 },100);
             }
         }
-        
     }
+};
+
+const add_H = () => {
+    var eMD = parseLS("elementMergerData");
+    let ary = eMD.kObj;
+    ary.splice(0, 0, "h");
+
+    saveLS("elementMergerData", eMD);
+    var newTopKey = createEle("div");
+
+    newTopKey.className = "h";
+    newTopKey.innerHTML = "h";
+    newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
+    newTopKey.style.cursor = "grab";
+    newTopKey.style.opacity = "0.2";
+    newTopKey.ondrag = (event) => drag(event);
+
+    newTopKey.draggable = true;
+
+    sideBar.insertBefore(newTopKey, sideBar.childNodes[0]);
+
+    setTimeout(function(){
+        newTopKey.style.opacity = "1";
+        newTopKey.style.backgroundColor = "white";
+    },100);
+};
+
+const add_G = () => {
+    var eMD = parseLS("elementMergerData");
+    let ary = eMD.kObj;
+    ary.splice(0, 0, "g");
+
+    saveLS("elementMergerData", eMD);
+    var newTopKey = createEle("div");
+
+    newTopKey.className = "g";
+    newTopKey.innerHTML = "g";
+    newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
+    newTopKey.style.cursor = "grab";
+    newTopKey.style.opacity = "0.2";
+    newTopKey.ondrag = (event) => drag(event);
+
+    newTopKey.draggable = true;
+
+    sideBar.insertBefore(newTopKey, sideBar.childNodes[0]);
+
+    setTimeout(function(){
+        newTopKey.style.opacity = "1";
+        newTopKey.style.backgroundColor = "white";
+    },100);
+};
+
+const add_F = () => {
+    var eMD = parseLS("elementMergerData");
+    let ary = eMD.kObj;
+    ary.splice(0, 0, "f");
+
+    saveLS("elementMergerData", eMD);
+    var newTopKey = createEle("div");
+
+    newTopKey.className = "f";
+    newTopKey.innerHTML = "f";
+    newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
+    newTopKey.style.cursor = "grab";
+    newTopKey.style.opacity = "0.2";
+    newTopKey.ondrag = (event) => drag(event);
+
+    newTopKey.draggable = true;
+
+    sideBar.insertBefore(newTopKey, sideBar.childNodes[0]);
+
+    setTimeout(function(){
+        newTopKey.style.opacity = "1";
+        newTopKey.style.backgroundColor = "white";
+    },100);
 };
 
 const completedAlert = () => {

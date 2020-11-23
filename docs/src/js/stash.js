@@ -1,8 +1,8 @@
 var knownObjects = ["a","b","c","d"];
 
-var unknownObjects = ["aa","ab","ac","ad","bb","bc","bd","cc","cd","dd"];
+var unknownObjects = ["aa","ab","ac","ad","af","ah","ag","bb","bc","bd","bf","bg","bh","cc","cd","cf","cg","ch","dd","df","dg","dh","ff","fg","fh","gg","gh","hh"];
 
 var userdata = {
 	kObj: knownObjects,
-	unkObj: unknownObjects	
+	unkObj: unknownObjects
 };

@@ -16,7 +16,6 @@ html, body {
 }
 
 #board div {
-    background: pink;
     line-height: 5vw;
     width: 5vw;
     text-align: center;
@@ -40,6 +39,11 @@ html, body {
 }
 
 /* MULTI */
+
+#sideBar div,#board div {
+    background: white;
+    box-shadow: 0 0 1px black,0 0 1px black,0 0 2px inset black,0 0 2px inset black;
+}
 
 #sideBar,#board {
     position: absolute;
