@@ -63,6 +63,7 @@ const drop = (ev) => {
     
     if (newItem.parentNode.id != "board") {
         var eMD = parseLS("elementMergerData");
+        
         var combination = newItem.parentNode.className + newItem.className,
             comboMixed = newItem.className + newItem.parentNode.className;
 
@@ -123,7 +124,7 @@ const drop = (ev) => {
 
                 newKey.draggable = true;
 
-                sideBar.append(newKey);
+                sideBar.insertBefore(newKey, sideBar.childNodes[4]);
 
                 board.appendChild(alterItem);
 
@@ -170,7 +171,7 @@ const add_H = () => {
 
     newTopKey.draggable = true;
 
-    sideBar.insertBefore(newTopKey, sideBar.childNodes[0]);
+    sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
 
     setTimeout(function(){
         newTopKey.style.opacity = "1";
@@ -195,7 +196,7 @@ const add_G = () => {
 
     newTopKey.draggable = true;
 
-    sideBar.insertBefore(newTopKey, sideBar.childNodes[0]);
+    sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
 
     setTimeout(function(){
         newTopKey.style.opacity = "1";
@@ -220,7 +221,7 @@ const add_F = () => {
 
     newTopKey.draggable = true;
 
-    sideBar.insertBefore(newTopKey, sideBar.childNodes[0]);
+    sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
 
     setTimeout(function(){
         newTopKey.style.opacity = "1";

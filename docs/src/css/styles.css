@@ -11,36 +11,33 @@ html, body {
 /* ID */
 
 #board {
-    width:88.4vw;
+    width:88vw;
     height:100vh;
 }
 
 #board div {
-    line-height: 5vw;
-    width: 5vw;
-    text-align: center;
+    
 }
 
 #sideBar {    
-    left:88.5vw;
-    width: 11.5vw;
+    left:88vw;
+    width: 12vw;
     height: 100vh;
     text-align: center;
     overflow-y: auto;
 }
 
 #sideBar div {
-    cursor: grab;
     transition: 1s all;
-    line-height: 5vw;
-    width: 5vw;
-    margin: 10px 25%;
-    text-align: center;
+    margin: 10px 0;
 }
 
 /* MULTI */
 
 #sideBar div,#board div {
+    line-height: 9vw;
+    width: 9vw;
+    text-align: center;
     background: white;
     box-shadow: 0 0 1px black,0 0 1px black,0 0 2px inset black,0 0 2px inset black;
 }
@@ -48,7 +45,6 @@ html, body {
 #sideBar,#board {
     position: absolute;
     background: white;
-
 }
 
 /* KEYFRAMES */
