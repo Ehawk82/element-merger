@@ -67,16 +67,14 @@ const drop = (ev) => {
         var combination = newItem.parentNode.className + newItem.className,
             comboMixed = newItem.className + newItem.parentNode.className;
 
-        newItem.parentNode.remove();
+            newItem.parentNode.remove();
 
         for (var i = 0; i < eMD.unkObj.length; i++) {
-
             if(combination === eMD.unkObj[i] || comboMixed === eMD.unkObj[i]){
-                if (comboMixed != eMD.unkObj[i]) {
-                    
-                } else {
+                if (comboMixed != eMD.unkObj[i]) {} else {
                     combination = comboMixed;
                 }
+
                 var alterItem = createEle("div");
                     
                 alterItem.innerHTML = combination;
@@ -87,7 +85,6 @@ const drop = (ev) => {
                 alterItem.style.top = ev.y + "px";
 
                 alterItem.ondrag = (event) => drag(event);
-
                 alterItem.draggable = true;
 
                 ev.preventDefault();
@@ -104,11 +101,9 @@ const drop = (ev) => {
                 };
 
                 var ary = eMD.unkObj;
-
                 ary.remove(combination);
 
                 eMD.kObj.push(combination);
-
                 eMD.unkObj = ary;
 
                 saveLS("elementMergerData",eMD);
@@ -129,20 +124,19 @@ const drop = (ev) => {
                 board.appendChild(alterItem);
 
                 if (eMD.kObj.length === 14) {
-                    add_F();
+                    add_letter("f");
                 }
 
                 if (eMD.kObj.length === 20) {
-                    add_G();
+                    add_letter("g");
                 }
 
                 if (eMD.kObj.length === 27) {
-                    add_H();
+                    add_letter("h");
                 }
 
                 setTimeout(function(){
                     newKey.style.opacity = "1";
-
                     newKey.style.backgroundColor = "white";
                     
                     if(eMD.unkObj.length === 0){
@@ -154,71 +148,23 @@ const drop = (ev) => {
     }
 };
 
-const add_H = () => {
+const add_letter = (x) => {
     var eMD = parseLS("elementMergerData");
     let ary = eMD.kObj;
-    ary.splice(0, 0, "h");
+
+    ary.splice(0, 0, x);
 
     saveLS("elementMergerData", eMD);
+
     var newTopKey = createEle("div");
 
-    newTopKey.className = "h";
-    newTopKey.innerHTML = "h";
+    newTopKey.className = x;
+    newTopKey.innerHTML = x;
     newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
     newTopKey.style.cursor = "grab";
     newTopKey.style.opacity = "0.2";
+
     newTopKey.ondrag = (event) => drag(event);
-
-    newTopKey.draggable = true;
-
-    sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
-
-    setTimeout(function(){
-        newTopKey.style.opacity = "1";
-        newTopKey.style.backgroundColor = "white";
-    },100);
-};
-
-const add_G = () => {
-    var eMD = parseLS("elementMergerData");
-    let ary = eMD.kObj;
-    ary.splice(0, 0, "g");
-
-    saveLS("elementMergerData", eMD);
-    var newTopKey = createEle("div");
-
-    newTopKey.className = "g";
-    newTopKey.innerHTML = "g";
-    newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
-    newTopKey.style.cursor = "grab";
-    newTopKey.style.opacity = "0.2";
-    newTopKey.ondrag = (event) => drag(event);
-
-    newTopKey.draggable = true;
-
-    sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
-
-    setTimeout(function(){
-        newTopKey.style.opacity = "1";
-        newTopKey.style.backgroundColor = "white";
-    },100);
-};
-
-const add_F = () => {
-    var eMD = parseLS("elementMergerData");
-    let ary = eMD.kObj;
-    ary.splice(0, 0, "f");
-
-    saveLS("elementMergerData", eMD);
-    var newTopKey = createEle("div");
-
-    newTopKey.className = "f";
-    newTopKey.innerHTML = "f";
-    newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
-    newTopKey.style.cursor = "grab";
-    newTopKey.style.opacity = "0.2";
-    newTopKey.ondrag = (event) => drag(event);
-
     newTopKey.draggable = true;
 
     sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
@@ -231,6 +177,7 @@ const add_F = () => {
 
 const completedAlert = () => {
     alert("you found every recipe!");
+    //TODO make a popup for win state
 };
 
 window.onload = function () {
