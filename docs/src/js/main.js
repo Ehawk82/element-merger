@@ -40,7 +40,6 @@ const allowDrop = (ev) => {
 
 const drag = (ev) => {
     globalFile = ev.target.className;
-    var myItem = byClass(globalFile);
 };
 
 const drop = (ev) => {
@@ -81,8 +80,8 @@ const drop = (ev) => {
                 alterItem.style.cursor = "grab";
                 alterItem.className = combination;
                 alterItem.style.position = "absolute";
-                alterItem.style.left = ev.x + "px";
-                alterItem.style.top = ev.y + "px";
+                alterItem.style.left = (ev.x - 50) + "px";
+                alterItem.style.top = (ev.y - 50) + "px";
 
                 alterItem.ondrag = (event) => drag(event);
                 alterItem.draggable = true;
@@ -176,8 +175,23 @@ const add_letter = (x) => {
 };
 
 const completedAlert = () => {
-    alert("you found every recipe!");
+    const winPage = createEle("div"),
+          title = createEle("h2"),
+          msg = createEle("p");
+
+    title.innerHTML = "CONGRATULATIONS!";
+
+    msg.innerHTML = "You have discovered every recipe!";
+
+    winPage.append(title,msg);
+    winPage.className = "winPage";
+
+    body.append(winPage);
     //TODO make a popup for win state
+    setTimeout(function(){
+        makeFull(winPage);
+        removeLSitem("elementMergerData");
+    },10);
 };
 
 window.onload = function () {
