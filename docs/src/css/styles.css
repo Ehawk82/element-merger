@@ -1,68 +1,72 @@
 /* DOM */
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background: black;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
 }
 
 body {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
 /* CLASS */
 
 .winPage {
-    top:100vh;
+  top: 100vh;
 }
 .winPage_full {
-    top:0;
+  top: 0;
 }
 /* ID */
 
 #board {
-    width:88vw;
-    height:100vh;
+  width: 88vw;
+  height: 100vh;
 }
 
 #board div {
-    
 }
 
-#sideBar {    
-    left:88vw;
-    width: 12vw;
-    height: 100vh;
-    text-align: center;
-    overflow-y: auto;
+#sideBar {
+  left: 88vw;
+  width: 12vw;
+  height: 100vh;
+  text-align: center;
+  overflow-y: auto;
 }
 
 #sideBar div {
-    transition: 1s all;
-    margin: 10px 0;
+  transition: 1s all;
+  margin: 10px 0;
 }
 
 /* MULTI */
-.winPage, .winPage_full {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    left:0;
-    background-color: white;
-    transition: 333ms all;
-    text-align: center;
+.winPage,
+.winPage_full {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  background-color: white;
+  transition: 333ms all;
+  text-align: center;
 }
 
-#sideBar div,#board div {
-    line-height: 9vw;
-    width: 9vw;
-    text-align: center;
-    background: white;
-    box-shadow: 0 0 1px black,0 0 1px black,0 0 2px inset black,0 0 2px inset black;
+#sideBar div,
+#board div {
+  line-height: 9vw;
+  width: 9vw;
+  text-align: center;
+  background: white;
+  box-shadow: 0 0 2px inset black, 0 0 2px inset black;
+  background: rgba(255, 255, 255, 1);
 }
 
-#sideBar,#board {
-    position: absolute;
-    background: white;
+#sideBar,
+#board {
+  position: absolute;
+  background: white;
 }
 
 /* KEYFRAMES */
@@ -71,93 +75,85 @@ body {
 
 /* 600px and down */
 @media only screen and (max-width: 600px) {
-    /* DOM */
+  /* DOM */
 
-    /* CLASS */
+  /* CLASS */
 
-    /* ID */
+  /* ID */
 
-    /* MULTI */
+  /* MULTI */
 
-    /* KEYFRAMES */
+  /* KEYFRAMES */
 
-    /* MEDIA QUERIES */
+  /* MEDIA QUERIES */
 
-    /* 600px and down */
+  /* 600px and down */
 }
-
-
 
 /* 600px and up */
 @media only screen and (min-width: 600px) {
-    /* DOM */
+  /* DOM */
 
-    /* CLASS */
+  /* CLASS */
 
-    /* ID */
+  /* ID */
 
-    /* MULTI */
+  /* MULTI */
 
-    /* KEYFRAMES */
+  /* KEYFRAMES */
 
-    /* MEDIA QUERIES */
+  /* MEDIA QUERIES */
 
-    /* 600px and down */
+  /* 600px and down */
 }
-
-
 
 /* 768px and up */
 @media only screen and (min-width: 768px) {
-    /* DOM */
+  /* DOM */
 
-    /* CLASS */
+  /* CLASS */
 
-    /* ID */
+  /* ID */
 
-    /* MULTI */
+  /* MULTI */
 
-    /* KEYFRAMES */
+  /* KEYFRAMES */
 
-    /* MEDIA QUERIES */
+  /* MEDIA QUERIES */
 
-    /* 600px and down */
+  /* 600px and down */
 }
-
-
 
 /* 992px and up */
 @media only screen and (min-width: 992px) {
-    /* DOM */
+  /* DOM */
 
-    /* CLASS */
+  /* CLASS */
 
-    /* ID */
+  /* ID */
 
-    /* MULTI */
+  /* MULTI */
 
-    /* KEYFRAMES */
+  /* KEYFRAMES */
 
-    /* MEDIA QUERIES */
+  /* MEDIA QUERIES */
 
-    /* 600px and down */
+  /* 600px and down */
 }
-
-
 
 /* 1200px and up */
 @media only screen and (min-width: 1200px) {
-    /* DOM */
+  /* DOM */
 
-    /* CLASS */
+  /* CLASS */
 
-    /* ID */
+  /* ID */
 
-    /* MULTI */
+  /* MULTI */
 
-    /* KEYFRAMES */
+  /* KEYFRAMES */
 
-    /* MEDIA QUERIES */
+  /* MEDIA QUERIES */
 
-    /* 600px and down */
+  /* 600px and down */
 }
