@@ -1,6 +1,7 @@
 var knownObjects = ["a", "b", "c", "d"];
 
-// for quick testing // var unknownObjects = ["aa","ab","ac","ad"];
+//var unknownObjects = ["aa","ab","ac","ad"];
+
 var unknownObjects = [
   "aa",
   "ab",
@@ -57,3 +58,13 @@ var userdata = {
   kObj: knownObjects,
   unkObj: unknownObjects,
 };
+
+var appSounds = [
+  "beep.wav",
+  "clack.wav",
+  "complete.mp3",
+  "deduct.wav",
+  "fx.wav",
+  "grab.mp3",
+  "ting.wav"
+]; 

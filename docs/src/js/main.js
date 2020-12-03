@@ -26,6 +26,7 @@ const appBuild = (eMD) => {
     thingy.innerHTML = eMD.kObj[i];
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
+    thingy.onmousedown = () => { return commitSound(5) };
     thingy.ondrag = (event) => drag(event);
 
     thingy.draggable = true;
@@ -43,6 +44,7 @@ const drag = (ev) => {
 };
 
 const drop = (ev) => {
+  commitSound(1);
   var newItem = createEle("div");
 
   newItem.innerHTML = globalFile;
@@ -51,7 +53,7 @@ const drop = (ev) => {
   newItem.style.position = "absolute";
   newItem.style.left = ev.x - 50 + "px";
   newItem.style.top = ev.y - 50 + "px";
-
+  newItem.onmousedown = () => { return commitSound(5) };
   newItem.ondrag = (event) => drag(event);
 
   newItem.draggable = true;
@@ -61,6 +63,7 @@ const drop = (ev) => {
   ev.target.appendChild(newItem);
 
   if (newItem.parentNode.id != "board") {
+    let scopeBool = false;
     var eMD = parseLS("elementMergerData");
 
     var combination = newItem.parentNode.className + newItem.className,
@@ -75,6 +78,7 @@ const drop = (ev) => {
           combination = comboMixed;
         }
         generateAlterItem(ev, combination);
+        scopeBool = true;
       }
     }
 
@@ -86,6 +90,7 @@ const drop = (ev) => {
         }
 
         generateAlterItem(ev, combination);
+        scopeBool = true;
 
         Array.prototype.remove = function () {
           var what,
@@ -116,6 +121,7 @@ const drop = (ev) => {
         newKey.style.cursor = "grab";
         newKey.style.opacity = "0.2";
         newKey.className = combination;
+        newKey.onmousedown = () => { return commitSound(5) };
         newKey.ondrag = (event) => drag(event);
 
         newKey.draggable = true;
@@ -134,6 +140,8 @@ const drop = (ev) => {
           add_letter("h");
         }
 
+        commitSound(0);
+
         setTimeout(function () {
           newKey.style.opacity = "1";
           newKey.style.backgroundColor = "white";
@@ -143,6 +151,10 @@ const drop = (ev) => {
           }
         }, 100);
       }
+    }
+
+    if(scopeBool == false){
+        commitSound(3);
     }
   }
 };
@@ -155,8 +167,9 @@ const generateAlterItem = (ev, combination) => {
   alterItem.style.position = "absolute";
   alterItem.style.left = ev.x - 50 + "px";
   alterItem.style.top = ev.y - 50 + "px";
-
+  alterItem.onmousedown = () => { return commitSound(5) };
   alterItem.ondrag = (event) => drag(event);
+
   alterItem.draggable = true;
 
   ev.preventDefault();
@@ -165,6 +178,7 @@ const generateAlterItem = (ev, combination) => {
 };
 
 const add_letter = (x) => {
+  
   var eMD = parseLS("elementMergerData");
   let ary = eMD.kObj;
 
@@ -179,16 +193,22 @@ const add_letter = (x) => {
   newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
   newTopKey.style.cursor = "grab";
   newTopKey.style.opacity = "0.2";
-
+  newTopKey.onmousedown = () => { return commitSound(5) };
   newTopKey.ondrag = (event) => drag(event);
+
   newTopKey.draggable = true;
 
   sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
+  
+  
 
   setTimeout(function () {
+
     newTopKey.style.opacity = "1";
     newTopKey.style.backgroundColor = "white";
-  }, 100);
+    commitSound(6);
+    
+  }, 200);
 };
 
 const completedAlert = () => {
@@ -204,11 +224,22 @@ const completedAlert = () => {
   winPage.className = "winPage";
 
   body.append(winPage);
+
+  commitSound(6);
+
   //TODO make a popup for win state
   setTimeout(function () {
     makeFull(winPage);
     removeLSitem("elementMergerData");
   }, 10);
+};
+
+const commitSound = x => {
+    let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
+
+
+    mySound.volume = .3;
+    mySound.play();
 };
 
 window.onload = function () {
