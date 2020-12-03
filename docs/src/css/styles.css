@@ -25,12 +25,12 @@ body {
 
 }
 .navBar button {
-    margin: 0 5px;
+    margin: 5px;
     font-size: 3em;
 }
 .refreshSideBarBtn {
     position: fixed;
-    right: 3vw;
+    right: 12vw;
 }
 
 /* ID */
@@ -45,7 +45,7 @@ body {
 
 #sideBar {
   left: 88vw;
-  bottom: 76px;
+
   width: 12vw;
   height: 100vh;
   text-align: center;
