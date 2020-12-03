@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: black;
+  background: white;
 }
 
 body {
@@ -18,6 +18,21 @@ body {
 .winPage_full {
   top: 0;
 }
+
+.navBar {
+    position: absolute;
+    bottom:0;
+
+}
+.navBar button {
+    margin: 0 5px;
+    font-size: 3em;
+}
+.refreshSideBarBtn {
+    position: fixed;
+    right: 3vw;
+}
+
 /* ID */
 
 #board {
@@ -30,6 +45,7 @@ body {
 
 #sideBar {
   left: 88vw;
+  bottom: 76px;
   width: 12vw;
   height: 100vh;
   text-align: center;
@@ -69,6 +85,9 @@ body {
   background: white;
 }
 
+.navBar button {
+    cursor: pointer;
+}
 /* KEYFRAMES */
 
 /* MEDIA QUERIES */

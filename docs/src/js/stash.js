@@ -30,28 +30,7 @@ var unknownObjects = [
   "fh",
   "gg",
   "gh",
-  "hh",
-  "aaaa",
-  "bbbb",
-  "cccc",
-  "dddd",
-  "ffff",
-  "gggg",
-  "aabb",
-  "aacc",
-  "aadd",
-  "aaff",
-  "aagg",
-  "bbcc",
-  "bbdd",
-  "bbff",
-  "bbgg",
-  "ccdd",
-  "ccff",
-  "ccgg",
-  "ddff",
-  "ddgg",
-  "ffgg",
+  "hh"
 ];
 
 var userdata = {
@@ -64,7 +43,8 @@ var appSounds = [
   "clack.wav",
   "complete.mp3",
   "deduct.wav",
-  "fx.wav",
+  "sweep.wav",
   "grab.mp3",
-  "ting.wav"
+  "ting.wav",
+  "swap.wav"
 ]; 

@@ -12,12 +12,26 @@ const init = () => {
 };
 
 const appBuild = (eMD) => {
-  var board = createEle("div");
+  var board = createEle("div"),
+      navBar = createEle("div"),
+      clearBtn = createEle("button"),
+      refreshSideBarBtn = createEle("button");
+  
+  clearBtn.innerHTML = "🔄";
+  clearBtn.onclick = () => { return clearBoard() };
+
+  refreshSideBarBtn.innerHTML = "↪️";
+  refreshSideBarBtn.className = "refreshSideBarBtn";
+  refreshSideBarBtn.onclick = () => { return refreshSideBarFunc() };
+
+  navBar.className = "navBar";
+  navBar.append(clearBtn, refreshSideBarBtn);
+
   board.ondrop = (event) => drop(event);
   board.id = "board";
   board.ondragover = (event) => allowDrop(event);
 
-  body.append(board);
+  body.append(board,navBar);
 
   for (var i = 0; i < eMD.kObj.length; i++) {
     /* this loop creates elements from an array in local storage */
@@ -158,6 +172,36 @@ const drop = (ev) => {
     }
   }
 };
+
+const refreshSideBarFunc = () => {
+    sideBar.innerHTML = "";
+
+    var eMD = parseLS("elementMergerData");
+    
+    for (var i = 0; i < eMD.kObj.length; i++) {
+    /* this loop creates elements from an array in local storage */
+    var thingy = createEle("div");
+
+    thingy.innerHTML = eMD.kObj[i];
+    thingy.style.cursor = "grab";
+    thingy.className = eMD.kObj[i];
+    thingy.onmousedown = () => { return commitSound(5) };
+    thingy.ondrag = (event) => drag(event);
+
+    thingy.draggable = true;
+
+    sideBar.append(thingy);
+
+
+  }
+  commitSound(7);
+}; 
+
+const clearBoard = () => {
+    commitSound(4);
+    board.innerHTML = "";
+};
+
 const generateAlterItem = (ev, combination) => {
   var alterItem = createEle("div");
 
@@ -220,12 +264,17 @@ const completedAlert = () => {
 
   msg.innerHTML = "You have discovered every recipe!";
 
-  winPage.append(title, msg);
+  const reloadBtn = createEle("button");
+
+  reloadBtn.innerHTML = "RESTART";
+  reloadBtn.onclick = () => { return location.reload() };
+
+  winPage.append(title, msg, reloadBtn);
   winPage.className = "winPage";
 
   body.append(winPage);
 
-  commitSound(6);
+  commitSound(2);
 
   //TODO make a popup for win state
   setTimeout(function () {
@@ -237,8 +286,7 @@ const completedAlert = () => {
 const commitSound = x => {
     let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
 
-
-    mySound.volume = .3;
+    mySound.volume = 0.3;
     mySound.play();
 };
 
