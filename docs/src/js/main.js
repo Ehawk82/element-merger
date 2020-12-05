@@ -2,20 +2,31 @@ let globalFile;
 
 const init = () => {
   //todo: initialize local storage object
-  var eMD = parseLS("elementMergerData");
+  var eMD = parseLS("elementMergerData"),
+      eMD_l = parseLS("eMD_legend");
 
   if (!eMD || eMD === null) {
     saveLS("elementMergerData", userdata);
   }
   var eMD = parseLS("elementMergerData");
+
+  if (!eMD_l || eMD_l === null) {
+    saveLS("eMD_legend", emd_legend);
+  }
   appBuild(eMD);
 };
 
 const appBuild = (eMD) => {
+  var eMD_l = parseLS("eMD_legend");
+
   var board = createEle("div"),
       navBar = createEle("div"),
       clearBtn = createEle("button"),
-      refreshSideBarBtn = createEle("button");
+      refreshSideBarBtn = createEle("button"),
+      settings = createEle("button");
+
+  settings.innerHTML = "🔼";
+  settings.onclick = () => { return runSettPage() };
   
   clearBtn.innerHTML = "🔄";
   clearBtn.onclick = () => { return clearBoard() };
@@ -25,7 +36,7 @@ const appBuild = (eMD) => {
   refreshSideBarBtn.onclick = () => { return refreshSideBarFunc() };
 
   navBar.className = "navBar";
-  navBar.append(clearBtn, refreshSideBarBtn);
+  navBar.append(clearBtn, settings, refreshSideBarBtn);
 
   board.ondrop = (event) => drop(event);
   board.id = "board";
@@ -173,6 +184,47 @@ const drop = (ev) => {
   }
 };
 
+const runSettPage = () => {
+    var eMD_l = parseLS("eMD_legend");
+
+    var settPage = createEle("div"),
+        soundFeature = createEle("div"),
+        sndRange = createEle("input"),
+        xOut = createEle("button");
+
+    sndRange.type = "range";
+    sndRange.min = 0;
+    sndRange.max = 1;
+    sndRange.step = 0.001;
+    sndRange.value = eMD_l.sound;
+    sndRange.onmouseup = updateSoundVolume(eMD_l, sndRange);
+
+    xOut.innerHTML = "❌";
+    xOut.className = "xOut";
+    xOut.onclick = xOutFunc(xOut);
+
+    soundFeature.innerHTML = "SOUND VOLUME: ";
+    soundFeature.append(sndRange);
+
+    settPage.className = "settPage";
+    settPage.append(soundFeature,xOut);
+
+    body.append(settPage);
+
+    commitSound(7);
+
+    setTimeout(() => {
+        makeFull(settPage);
+    },0);
+};
+
+const updateSoundVolume = (eMD_l, sndRange) => {
+    return function() {
+        eMD_l.sound = sndRange.value;
+        saveLS("eMD_legend",eMD_l);
+    }
+};
+
 const refreshSideBarFunc = () => {
     sideBar.innerHTML = "";
 
@@ -283,10 +335,26 @@ const completedAlert = () => {
   }, 10);
 };
 
+const xOutFunc = (x,s) => {
+    return function(){
+        commitSound(7);
+
+        var p = x.parentNode;
+        
+        takeFull(p);
+
+        setTimeout(function(){
+            deleteThis(p);
+        },501);
+    };
+};
+
 const commitSound = x => {
+    var eMD_l = parseLS("eMD_legend");
+
     let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
 
-    mySound.volume = 0.3;
+    mySound.volume = eMD_l.sound;
     mySound.play();
 };
 

@@ -46,5 +46,10 @@ var appSounds = [
   "sweep.wav",
   "grab.mp3",
   "ting.wav",
-  "swap.wav"
-]; 
+  "swap.wav",
+  "c1.wav"
+];
+
+var emd_legend = {
+    sound: 1
+};

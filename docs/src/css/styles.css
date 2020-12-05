@@ -22,7 +22,6 @@ body {
 .navBar {
     position: absolute;
     bottom:0;
-
 }
 .navBar button {
     margin: 5px;
@@ -33,6 +32,19 @@ body {
     right: 12vw;
 }
 
+.settPage {
+    top:100vh;
+}
+.settPage_full {
+    top:0;
+}
+
+.xOut {
+    position: absolute;
+    top:5px;
+    right:5px;
+    font-size: 3em;
+}
 /* ID */
 
 #board {
@@ -41,11 +53,11 @@ body {
 }
 
 #board div {
+
 }
 
 #sideBar {
   left: 88vw;
-
   width: 12vw;
   height: 100vh;
   text-align: center;
@@ -58,6 +70,15 @@ body {
 }
 
 /* MULTI */
+.settPage, .settPage_full {
+    transition: 500ms all;
+    background: white;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+
 .winPage,
 .winPage_full {
   width: 100vw;
@@ -85,7 +106,7 @@ body {
   background: white;
 }
 
-.navBar button {
+.navBar button, .xOut {
     cursor: pointer;
 }
 /* KEYFRAMES */
