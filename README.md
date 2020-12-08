@@ -3,8 +3,8 @@ A small, basic representation of the game "Doodle God" and "Alchemy 10" for lear
 
 ## Requirements
 - Initial startup elements: 4
-- Total elements: 12
-- Game detects end-of-line elements
+- Total elements: 29
+- [x] Game detects end-of-line elements
 
 ## Features
 - Drag/Drop

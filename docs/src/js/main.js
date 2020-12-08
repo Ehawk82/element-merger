@@ -55,7 +55,7 @@ const appBuild = (eMD) => {
     thingy.ondrag = (event) => drag(event);
 
     thingy.draggable = true;
-
+    pollItems(eMD.kObj[i],thingy);
     sideBar.append(thingy);
   }
 };
@@ -150,7 +150,7 @@ const drop = (ev) => {
         newKey.ondrag = (event) => drag(event);
 
         newKey.draggable = true;
-
+pollItems(combination,newKey);
         sideBar.insertBefore(newKey, sideBar.childNodes[4]);
 
         if (eMD.kObj.length === 14) {
@@ -239,7 +239,7 @@ const refreshSideBarFunc = () => {
     thingy.className = eMD.kObj[i];
     thingy.onmousedown = () => { return commitSound(5) };
     thingy.ondrag = (event) => drag(event);
-
+pollItems(eMD.kObj[i],thingy);
     thingy.draggable = true;
 
     sideBar.append(thingy);
@@ -265,6 +265,8 @@ const generateAlterItem = (ev, combination) => {
   alterItem.style.top = ev.y - 50 + "px";
   alterItem.onmousedown = () => { return commitSound(5) };
   alterItem.ondrag = (event) => drag(event);
+
+  pollItems(combination,alterItem);
 
   alterItem.draggable = true;
 
@@ -296,14 +298,11 @@ const add_letter = (x) => {
 
   sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
   
-  
-
   setTimeout(function () {
 
     newTopKey.style.opacity = "1";
     newTopKey.style.backgroundColor = "white";
     commitSound(6);
-    
   }, 200);
 };
 
@@ -347,6 +346,14 @@ const xOutFunc = (x,s) => {
             deleteThis(p);
         },501);
     };
+};
+
+const pollItems = (x, y) => {
+  for (var r = 0; r < eol.length; r++) {
+    if (x === eol[r]) {
+      y.style.boxShadow = "0 0 10px inset red";
+    }
+  }
 };
 
 const commitSound = x => {

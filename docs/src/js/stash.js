@@ -1,7 +1,7 @@
+/* user starts with these */
 var knownObjects = ["a", "b", "c", "d"];
 
-//var unknownObjects = ["aa","ab","ac","ad"];
-
+/* list of unknown elements */
 var unknownObjects = [
   "aa",
   "ab",
@@ -30,14 +30,28 @@ var unknownObjects = [
   "fh",
   "gg",
   "gh",
-  "hh"
+  "hh",
+  "bac",
+  "aaaa"
 ];
 
+/* shorter version of unknownObjects for testing */
+//var unknownObjects = ["aa","ab","ac","ad"];
+
+/* end of line assertions */
+var eol = [
+  "bac",
+  "ac",
+  "aaaa",
+]
+
+/* template summoned by init on first load */
 var userdata = {
   kObj: knownObjects,
   unkObj: unknownObjects,
+  eOL: eol
 };
-
+/* sound - CAUTION: to match the correct sound, we do this by passing the correct index */
 var appSounds = [
   "beep.wav",
   "clack.wav",
@@ -50,6 +64,7 @@ var appSounds = [
   "c1.wav"
 ];
 
+/* these are settings that are not meant to be deleted */
 var emd_legend = {
-    sound: 1
+    sound: 0
 };
