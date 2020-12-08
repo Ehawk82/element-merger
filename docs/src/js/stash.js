@@ -32,7 +32,8 @@ var unknownObjects = [
   "gh",
   "hh",
   "bac",
-  "aaaa"
+  "aaaa",
+  "aabb"
 ];
 
 /* shorter version of unknownObjects for testing */
@@ -43,6 +44,7 @@ var eol = [
   "bac",
   "ac",
   "aaaa",
+  "aabb"
 ]
 
 /* template summoned by init on first load */

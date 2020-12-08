@@ -1,9 +1,8 @@
 let globalFile;
 
 const init = () => {
-  //todo: initialize local storage object
   var eMD = parseLS("elementMergerData"),
-      eMD_l = parseLS("eMD_legend");
+    eMD_l = parseLS("eMD_legend");
 
   if (!eMD || eMD === null) {
     saveLS("elementMergerData", userdata);
@@ -20,20 +19,26 @@ const appBuild = (eMD) => {
   var eMD_l = parseLS("eMD_legend");
 
   var board = createEle("div"),
-      navBar = createEle("div"),
-      clearBtn = createEle("button"),
-      refreshSideBarBtn = createEle("button"),
-      settings = createEle("button");
+    navBar = createEle("div"),
+    clearBtn = createEle("button"),
+    refreshSideBarBtn = createEle("button"),
+    settings = createEle("button");
 
   settings.innerHTML = "🔼";
-  settings.onclick = () => { return runSettPage() };
-  
+  settings.onclick = () => {
+    return runSettPage();
+  };
+
   clearBtn.innerHTML = "🔄";
-  clearBtn.onclick = () => { return clearBoard() };
+  clearBtn.onclick = () => {
+    return clearBoard();
+  };
 
   refreshSideBarBtn.innerHTML = "↪️";
   refreshSideBarBtn.className = "refreshSideBarBtn";
-  refreshSideBarBtn.onclick = () => { return refreshSideBarFunc() };
+  refreshSideBarBtn.onclick = () => {
+    return refreshSideBarFunc();
+  };
 
   navBar.className = "navBar";
   navBar.append(clearBtn, settings, refreshSideBarBtn);
@@ -42,20 +47,21 @@ const appBuild = (eMD) => {
   board.id = "board";
   board.ondragover = (event) => allowDrop(event);
 
-  body.append(board,navBar);
+  body.append(board, navBar);
 
   for (var i = 0; i < eMD.kObj.length; i++) {
-    /* this loop creates elements from an array in local storage */
     var thingy = createEle("div");
 
     thingy.innerHTML = eMD.kObj[i];
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
-    thingy.onmousedown = () => { return commitSound(5) };
+    thingy.onmousedown = () => {
+      return commitSound(5);
+    };
     thingy.ondrag = (event) => drag(event);
 
     thingy.draggable = true;
-    pollItems(eMD.kObj[i],thingy);
+    pollItems(eMD.kObj[i], thingy);
     sideBar.append(thingy);
   }
 };
@@ -78,7 +84,9 @@ const drop = (ev) => {
   newItem.style.position = "absolute";
   newItem.style.left = ev.x - 50 + "px";
   newItem.style.top = ev.y - 50 + "px";
-  newItem.onmousedown = () => { return commitSound(5) };
+  newItem.onmousedown = () => {
+    return commitSound(5);
+  };
   newItem.ondrag = (event) => drag(event);
 
   newItem.draggable = true;
@@ -146,11 +154,13 @@ const drop = (ev) => {
         newKey.style.cursor = "grab";
         newKey.style.opacity = "0.2";
         newKey.className = combination;
-        newKey.onmousedown = () => { return commitSound(5) };
+        newKey.onmousedown = () => {
+          return commitSound(5);
+        };
         newKey.ondrag = (event) => drag(event);
 
         newKey.draggable = true;
-pollItems(combination,newKey);
+
         sideBar.insertBefore(newKey, sideBar.childNodes[4]);
 
         if (eMD.kObj.length === 14) {
@@ -166,7 +176,7 @@ pollItems(combination,newKey);
         }
 
         commitSound(0);
-
+        pollItems(combination, newKey);
         setTimeout(function () {
           newKey.style.opacity = "1";
           newKey.style.backgroundColor = "white";
@@ -178,80 +188,79 @@ pollItems(combination,newKey);
       }
     }
 
-    if(scopeBool == false){
-        commitSound(3);
+    if (scopeBool == false) {
+      commitSound(3);
     }
   }
 };
 
 const runSettPage = () => {
-    var eMD_l = parseLS("eMD_legend");
+  var eMD_l = parseLS("eMD_legend");
 
-    var settPage = createEle("div"),
-        soundFeature = createEle("div"),
-        sndRange = createEle("input"),
-        xOut = createEle("button");
+  var settPage = createEle("div"),
+    soundFeature = createEle("div"),
+    sndRange = createEle("input"),
+    xOut = createEle("button");
 
-    sndRange.type = "range";
-    sndRange.min = 0;
-    sndRange.max = 1;
-    sndRange.step = 0.001;
-    sndRange.value = eMD_l.sound;
-    sndRange.onmouseup = updateSoundVolume(eMD_l, sndRange);
+  sndRange.type = "range";
+  sndRange.min = 0;
+  sndRange.max = 1;
+  sndRange.step = 0.001;
+  sndRange.value = eMD_l.sound;
+  sndRange.onmouseup = updateSoundVolume(eMD_l, sndRange);
 
-    xOut.innerHTML = "❌";
-    xOut.className = "xOut";
-    xOut.onclick = xOutFunc(xOut);
+  xOut.innerHTML = "❌";
+  xOut.className = "xOut";
+  xOut.onclick = xOutFunc(xOut);
 
-    soundFeature.innerHTML = "SOUND VOLUME: ";
-    soundFeature.append(sndRange);
+  soundFeature.innerHTML = "SOUND VOLUME: ";
+  soundFeature.append(sndRange);
 
-    settPage.className = "settPage";
-    settPage.append(soundFeature,xOut);
+  settPage.className = "settPage";
+  settPage.append(soundFeature, xOut);
 
-    body.append(settPage);
+  body.append(settPage);
 
-    commitSound(7);
+  commitSound(7);
 
-    setTimeout(() => {
-        makeFull(settPage);
-    },0);
+  setTimeout(() => {
+    makeFull(settPage);
+  }, 0);
 };
 
 const updateSoundVolume = (eMD_l, sndRange) => {
-    return function() {
-        eMD_l.sound = sndRange.value;
-        saveLS("eMD_legend",eMD_l);
-    }
+  return function () {
+    eMD_l.sound = sndRange.value;
+    saveLS("eMD_legend", eMD_l);
+  };
 };
 
 const refreshSideBarFunc = () => {
-    sideBar.innerHTML = "";
+  sideBar.innerHTML = "";
 
-    var eMD = parseLS("elementMergerData");
-    
-    for (var i = 0; i < eMD.kObj.length; i++) {
-    /* this loop creates elements from an array in local storage */
+  var eMD = parseLS("elementMergerData");
+
+  for (var i = 0; i < eMD.kObj.length; i++) {
     var thingy = createEle("div");
 
     thingy.innerHTML = eMD.kObj[i];
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
-    thingy.onmousedown = () => { return commitSound(5) };
+    thingy.onmousedown = () => {
+      return commitSound(5);
+    };
     thingy.ondrag = (event) => drag(event);
-pollItems(eMD.kObj[i],thingy);
+    pollItems(eMD.kObj[i], thingy);
     thingy.draggable = true;
 
     sideBar.append(thingy);
-
-
   }
   commitSound(7);
-}; 
+};
 
 const clearBoard = () => {
-    commitSound(4);
-    board.innerHTML = "";
+  commitSound(4);
+  board.innerHTML = "";
 };
 
 const generateAlterItem = (ev, combination) => {
@@ -263,10 +272,12 @@ const generateAlterItem = (ev, combination) => {
   alterItem.style.position = "absolute";
   alterItem.style.left = ev.x - 50 + "px";
   alterItem.style.top = ev.y - 50 + "px";
-  alterItem.onmousedown = () => { return commitSound(5) };
+  alterItem.onmousedown = () => {
+    return commitSound(5);
+  };
   alterItem.ondrag = (event) => drag(event);
 
-  pollItems(combination,alterItem);
+  pollItems(combination, alterItem);
 
   alterItem.draggable = true;
 
@@ -276,7 +287,6 @@ const generateAlterItem = (ev, combination) => {
 };
 
 const add_letter = (x) => {
-  
   var eMD = parseLS("elementMergerData");
   let ary = eMD.kObj;
 
@@ -291,15 +301,16 @@ const add_letter = (x) => {
   newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
   newTopKey.style.cursor = "grab";
   newTopKey.style.opacity = "0.2";
-  newTopKey.onmousedown = () => { return commitSound(5) };
+  newTopKey.onmousedown = () => {
+    return commitSound(5);
+  };
   newTopKey.ondrag = (event) => drag(event);
 
   newTopKey.draggable = true;
 
   sideBar.insertBefore(newTopKey, sideBar.childNodes[4]);
-  
-  setTimeout(function () {
 
+  setTimeout(function () {
     newTopKey.style.opacity = "1";
     newTopKey.style.backgroundColor = "white";
     commitSound(6);
@@ -318,7 +329,9 @@ const completedAlert = () => {
   const reloadBtn = createEle("button");
 
   reloadBtn.innerHTML = "RESTART";
-  reloadBtn.onclick = () => { return location.reload() };
+  reloadBtn.onclick = () => {
+    return location.reload();
+  };
 
   winPage.append(title, msg, reloadBtn);
   winPage.className = "winPage";
@@ -334,18 +347,18 @@ const completedAlert = () => {
   }, 10);
 };
 
-const xOutFunc = (x,s) => {
-    return function(){
-        commitSound(7);
+const xOutFunc = (x, s) => {
+  return function () {
+    commitSound(7);
 
-        var p = x.parentNode;
-        
-        takeFull(p);
+    var p = x.parentNode;
 
-        setTimeout(function(){
-            deleteThis(p);
-        },501);
-    };
+    takeFull(p);
+
+    setTimeout(function () {
+      deleteThis(p);
+    }, 501);
+  };
 };
 
 const pollItems = (x, y) => {
@@ -356,13 +369,13 @@ const pollItems = (x, y) => {
   }
 };
 
-const commitSound = x => {
-    var eMD_l = parseLS("eMD_legend");
+const commitSound = (x) => {
+  var eMD_l = parseLS("eMD_legend");
 
-    let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
+  let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
 
-    mySound.volume = eMD_l.sound;
-    mySound.play();
+  mySound.volume = eMD_l.sound;
+  mySound.play();
 };
 
 window.onload = function () {
