@@ -33,25 +33,20 @@ var unknownObjects = [
   "hh",
   "bac",
   "aaaa",
-  "aabb"
+  "aabb",
 ];
 
 /* shorter version of unknownObjects for testing */
 //var unknownObjects = ["aa","ab","ac","ad"];
 
 /* end of line assertions */
-var eol = [
-  "bac",
-  "ac",
-  "aaaa",
-  "aabb"
-]
+var eol = ["bac", "ac", "aaaa", "aabb"];
 
 /* template summoned by init on first load */
 var userdata = {
   kObj: knownObjects,
   unkObj: unknownObjects,
-  eOL: eol
+  eOL: eol,
 };
 /* sound - CAUTION: to match the correct sound, we do this by passing the correct index */
 var appSounds = [
@@ -63,10 +58,10 @@ var appSounds = [
   "grab.mp3",
   "ting.wav",
   "swap.wav",
-  "c1.wav"
+  "c1.wav",
 ];
 
 /* these are settings that are not meant to be deleted */
 var emd_legend = {
-    sound: 0
+  sound: 0,
 };

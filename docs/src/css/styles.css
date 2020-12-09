@@ -20,30 +20,30 @@ body {
 }
 
 .navBar {
-    position: absolute;
-    bottom:0;
+  position: absolute;
+  bottom: 0;
 }
 .navBar button {
-    margin: 5px;
-    font-size: 3em;
+  margin: 5px;
+  font-size: 3em;
 }
 .refreshSideBarBtn {
-    position: fixed;
-    right: 12vw;
+  position: fixed;
+  right: 12vw;
 }
 
 .settPage {
-    top:100vh;
+  top: 100vh;
 }
 .settPage_full {
-    top:0;
+  top: 0;
 }
 
 .xOut {
-    position: absolute;
-    top:5px;
-    right:5px;
-    font-size: 3em;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 3em;
 }
 /* ID */
 
@@ -53,7 +53,6 @@ body {
 }
 
 #board div {
-
 }
 
 #sideBar {
@@ -70,13 +69,14 @@ body {
 }
 
 /* MULTI */
-.settPage, .settPage_full {
-    transition: 500ms all;
-    background: white;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
+.settPage,
+.settPage_full {
+  transition: 500ms all;
+  background: white;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
 }
 
 .winPage,
@@ -106,8 +106,9 @@ body {
   background: white;
 }
 
-.navBar button, .xOut {
-    cursor: pointer;
+.navBar button,
+.xOut {
+  cursor: pointer;
 }
 /* KEYFRAMES */
 

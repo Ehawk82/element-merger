@@ -24,17 +24,17 @@ const appBuild = (eMD) => {
     refreshSideBarBtn = createEle("button"),
     settings = createEle("button");
 
-  settings.innerHTML = "🔼";
+  settings.innerHTML = "SETTINGS";
   settings.onclick = () => {
     return runSettPage();
   };
 
-  clearBtn.innerHTML = "🔄";
+  clearBtn.innerHTML = "CLEAR BOARD";
   clearBtn.onclick = () => {
     return clearBoard();
   };
 
-  refreshSideBarBtn.innerHTML = "↪️";
+  refreshSideBarBtn.innerHTML = "REFRESH LIST";
   refreshSideBarBtn.className = "refreshSideBarBtn";
   refreshSideBarBtn.onclick = () => {
     return refreshSideBarFunc();
