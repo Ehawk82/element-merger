@@ -25,6 +25,9 @@ A small, basic representation of the game "Doodle God" and "Alchemy 10" meant fo
   + [] Pay a dollar for 'NUM' x2 tokens per day
   + [] Membership for daily multiplier
 
-### Recipe Tree
-- [x] Demo tree
-- [] Working tree
+## Developers
+1. The object <code>unknownObjects</code> is a list of working combo
+2. The object <code>knownObjects</code> is a list of starting ingredients
+3. Sounds are currently still being modified.  'We shall create a better way' -unknown artisan
+
+
