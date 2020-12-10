@@ -1,6 +1,8 @@
 # element-merger
 A small, basic representation of the game "Doodle God" and "Alchemy 10" meant for learning/forking in to new projects
 
+[Play now!](https://ehawk82.github.io/element-merger/)
+
 ## Requirements
 - Initial startup elements: 4
 - Total elements: 30'ish
