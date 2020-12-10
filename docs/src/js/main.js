@@ -354,8 +354,6 @@ const completedAlert = () => {
 
 const xOutFunc = (x, s) => {
   return function () {
-    commitSound(7);
-
     var p = x.parentNode;
 
     takeFull(p);
