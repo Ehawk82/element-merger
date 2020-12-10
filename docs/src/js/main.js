@@ -19,22 +19,23 @@ const appBuild = (eMD) => {
   var eMD_l = parseLS("eMD_legend");
 
   var board = createEle("div"),
+    sideBar = createEle("div"),
     navBar = createEle("div"),
     clearBtn = createEle("button"),
     refreshSideBarBtn = createEle("button"),
     settings = createEle("button");
 
-  settings.innerHTML = "SETTINGS";
+  settings.innerHTML = "⚙️";
   settings.onclick = () => {
     return runSettPage();
   };
 
-  clearBtn.innerHTML = "CLEAR BOARD";
+  clearBtn.innerHTML = "🗑️";
   clearBtn.onclick = () => {
     return clearBoard();
   };
 
-  refreshSideBarBtn.innerHTML = "REFRESH LIST";
+  refreshSideBarBtn.innerHTML = "🔄";
   refreshSideBarBtn.className = "refreshSideBarBtn";
   refreshSideBarBtn.onclick = () => {
     return refreshSideBarFunc();
@@ -43,11 +44,13 @@ const appBuild = (eMD) => {
   navBar.className = "navBar";
   navBar.append(clearBtn, settings, refreshSideBarBtn);
 
+  sideBar.id = "sideBar";
+
   board.ondrop = (event) => drop(event);
   board.id = "board";
   board.ondragover = (event) => allowDrop(event);
 
-  body.append(board, navBar);
+  body.append(board,navBar,sideBar);
 
   for (var i = 0; i < eMD.kObj.length; i++) {
     var thingy = createEle("div");
@@ -176,7 +179,9 @@ const drop = (ev) => {
         }
 
         commitSound(0);
+
         pollItems(combination, newKey);
+
         setTimeout(function () {
           newKey.style.opacity = "1";
           newKey.style.backgroundColor = "white";
@@ -354,7 +359,7 @@ const xOutFunc = (x, s) => {
     var p = x.parentNode;
 
     takeFull(p);
-
+    commitSound(7);
     setTimeout(function () {
       deleteThis(p);
     }, 501);
