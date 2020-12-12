@@ -32,15 +32,27 @@ var unknownObjects = [
   "gh",
   "hh",
   "bac",
+  "aac",
+  "cac",
+  "dac",
+  "fac",
+  "gac",
+  "hac",
   "aaaa",
-  "aabb",
+  "bbbb",
+  "cccc",
+  "dddd",
+  "ffff",
+  "gggg",
+  "hhhh",
+  "abac"
 ];
 
 /* shorter version of unknownObjects for testing */
 //var unknownObjects = ["aa","ab","ac","ad"];
 
 /* end of line assertions */
-var eol = ["bac", "ac", "aaaa", "aabb"];
+var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","dac","fac","gac","hac","abac"];
 
 /* template summoned by init on first load */
 var userdata = {
