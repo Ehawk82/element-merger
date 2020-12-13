@@ -45,7 +45,8 @@ var unknownObjects = [
   "ffff",
   "gggg",
   "hhhh",
-  "abac"
+  "abac",
+  "abacdf"
 ];
 
 /* shorter version of unknownObjects for testing */
@@ -58,7 +59,7 @@ var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","d
 var userdata = {
   kObj: knownObjects,
   unkObj: unknownObjects,
-  eOL: eol,
+  eOL: eol
 };
 /* sound - CAUTION: to match the correct sound, we do this by passing the correct index */
 var appSounds = [
@@ -76,4 +77,6 @@ var appSounds = [
 /* these are settings that are not meant to be deleted */
 var emd_legend = {
   sound: 0,
+  musicVol: 0,
+  musicPos: 0
 };

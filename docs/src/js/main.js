@@ -1,4 +1,5 @@
 let globalFile;
+const mySong = new Audio("src/assets/music/mu1.flac");
 
 const init = () => {
   var eMD = parseLS("elementMergerData"),
@@ -16,11 +17,14 @@ const init = () => {
 };
 
 const appBuild = (eMD) => {
+
   var eMD_l = parseLS("eMD_legend");
 
   var board = createEle("div"),
     sideBar = createEle("div"),
     navBar = createEle("div"),
+    musicBtn = createEle("button"),
+    stopBtn = createEle("button"),
     clearBtn = createEle("button"),
     refreshSideBarBtn = createEle("button"),
     settings = createEle("button");
@@ -29,6 +33,14 @@ const appBuild = (eMD) => {
   settings.onclick = () => {
     return runSettPage();
   };
+
+  musicBtn.innerHTML = "▶️";
+  musicBtn.className = "musicBtn";
+  musicBtn.onclick = commitMusic(musicBtn);
+
+  stopBtn.innerHTML = "⏹️";
+  stopBtn.className = "stopBtn";
+  stopBtn.onclick = stopMusic(musicBtn);
 
   clearBtn.innerHTML = "🗑️";
   clearBtn.onclick = () => {
@@ -42,7 +54,7 @@ const appBuild = (eMD) => {
   };
 
   navBar.className = "navBar";
-  navBar.append(clearBtn, settings, refreshSideBarBtn);
+  navBar.append(clearBtn, settings, musicBtn, stopBtn, refreshSideBarBtn);
 
   sideBar.id = "sideBar";
 
@@ -51,6 +63,7 @@ const appBuild = (eMD) => {
   board.ondragover = (event) => allowDrop(event);
 
   body.append(board,navBar,sideBar);
+  commitMusic();
 
   for (var i = 0; i < eMD.kObj.length; i++) {
     var thingy = createEle("div");
@@ -209,8 +222,8 @@ const runSettPage = () => {
 
   sndRange.type = "range";
   sndRange.min = 0;
-  sndRange.max = 1;
-  sndRange.step = 0.001;
+  sndRange.max = .5;
+  sndRange.step = 0.0001;
   sndRange.value = eMD_l.sound;
   sndRange.onmouseup = updateSoundVolume(eMD_l, sndRange);
 
@@ -218,7 +231,8 @@ const runSettPage = () => {
   xOut.className = "xOut";
   xOut.onclick = xOutFunc(xOut);
 
-  soundFeature.innerHTML = "SOUND VOLUME: ";
+  soundFeature.innerHTML = "<h2>AUDIO</h2>";
+  soundFeature.className = "soundFeature";
   soundFeature.append(sndRange);
 
   settPage.className = "settPage";
@@ -372,12 +386,54 @@ const pollItems = (x, y) => {
   }
 };
 
+const pauseMusic = (x,mySong) => {
+  return function() {
+    var eMD_l = parseLS("eMD_legend");
+
+    x.innerHTML = "▶️";
+    x.onclick = commitMusic(x);
+
+
+    eMD_l.musicPos = mySong.currentTime;
+
+    saveLS("eMD_legend", eMD_l);
+    mySong.pause();
+  }
+};
+const stopMusic = (musicBtn) => {
+  return function(){
+    var eMD_l = parseLS("eMD_legend");
+    musicBtn.innerHTML = "▶️";
+    musicBtn.onclick = commitMusic(musicBtn);
+
+    eMD_l.musicPos = 0;
+
+    saveLS("eMD_legend", eMD_l);
+
+    mySong.pause();
+  }
+};
+const commitMusic = (x) => {
+  return function(){
+  var eMD_l = parseLS("eMD_legend");
+  
+
+    mySong.volume = eMD_l.musicVol;
+    mySong.currentTime = eMD_l.musicPos;
+    mySong.autoplay = true;
+    mySong.play();
+
+    x.onclick = pauseMusic(x,mySong);
+    x.innerHTML = "⏸️";
+  };
+};
 const commitSound = (x) => {
   var eMD_l = parseLS("eMD_legend");
 
   let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
 
   mySound.volume = eMD_l.sound;
+  mySound.currentTime = eMD_l.musicPos;
   mySound.play();
 };
 

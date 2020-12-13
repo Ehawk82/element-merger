@@ -38,7 +38,14 @@ body {
 .settPage_full {
   top: 0;
 }
-
+.soundFeature {
+  position: absolute;
+  top:20vh;
+  height: 60vh;
+  line-height: 30px;
+  left:20vw;
+  width: 60vw;
+}
 .xOut {
   position: absolute;
   top: 5px;
@@ -59,7 +66,6 @@ body {
   left: 88vw;
   width: 12vw;
   height: 100vh;
-  text-align: center;
   overflow-y: auto;
 }
 
@@ -67,6 +73,96 @@ body {
   transition: 1s all;
   margin: 10px 0;
 }
+
+input {
+  width: 100%;
+  margin: -4.85px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input:focus {
+  outline: none;
+}
+input::-webkit-slider-runnable-track {
+  background: #848484;
+  border: 1.6px solid #010101;
+  width: 100%;
+  height: 36.7px;
+  cursor: pointer;
+}
+input::-webkit-slider-thumb {
+  margin-top: 3.25px;
+  width: 20px;
+  height: 27px;
+  background: #ffffff;
+  border: 1.9px solid #000000;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input:focus::-webkit-slider-runnable-track {
+  background: #bfbfbf;
+}
+input::-moz-range-track {
+  background: #848484;
+  border: 1.6px solid #010101;
+  width: 100%;
+  height: 36.7px;
+  cursor: pointer;
+}
+input::-moz-range-thumb {
+  width: 20px;
+  height: 27px;
+  background: #ffffff;
+  border: 1.9px solid #000000;
+  cursor: pointer;
+}
+input::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 0 0;
+  color: transparent;
+  width: 100%;
+  height: 36.7px;
+  cursor: pointer;
+}
+input::-ms-fill-lower {
+  background: #494949;
+  border: 1.6px solid #010101;
+}
+input::-ms-fill-upper {
+  background: #848484;
+  border: 1.6px solid #010101;
+}
+input::-ms-thumb {
+  width: 20px;
+  height: 27px;
+  background: #ffffff;
+  border: 1.9px solid #000000;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input:focus::-ms-fill-lower {
+  background: #848484;
+}
+input:focus::-ms-fill-upper {
+  background: #bfbfbf;
+}
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+  input[type=range]..soundFeature input {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
+}
+
+
+.soundFeature input:hover {
+  opacity: 1;
+}
+
 
 /* MULTI */
 .settPage,
@@ -87,19 +183,21 @@ body {
   left: 0;
   background-color: white;
   transition: 333ms all;
-  text-align: center;
 }
 
 #sideBar div,
 #board div {
   line-height: 9vw;
   width: 9vw;
-  text-align: center;
   background: white;
   box-shadow: 0 0 2px inset black, 0 0 2px inset black;
   background: rgba(255, 255, 255, 1);
 }
-
+.soundFeature,.winPage,#sideBar,
+.winPage_full,#sideBar div,
+#board div {
+  text-align: center;
+}
 #sideBar,
 #board {
   position: absolute;
