@@ -59,7 +59,8 @@ var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","d
 var userdata = {
   kObj: knownObjects,
   unkObj: unknownObjects,
-  eOL: eol
+  eOL: eol,
+  currentHint: ""
 };
 /* sound - CAUTION: to match the correct sound, we do this by passing the correct index */
 var appSounds = [
@@ -76,7 +77,8 @@ var appSounds = [
 
 /* these are settings that are not meant to be deleted */
 var emd_legend = {
-  sound: 0,
-  musicVol: 0,
+  gold: 5,
+  sound: 0.25,
+  musicVol: 0.125,
   musicPos: 0
 };

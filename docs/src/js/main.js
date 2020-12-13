@@ -26,6 +26,8 @@ const appBuild = (eMD) => {
     musicBtn = createEle("button"),
     stopBtn = createEle("button"),
     clearBtn = createEle("button"),
+    hintOutput = createEle("input"),
+    hintBtn = createEle("button"),
     refreshSideBarBtn = createEle("button"),
     settings = createEle("button");
 
@@ -33,6 +35,32 @@ const appBuild = (eMD) => {
   settings.onclick = () => {
     return runSettPage();
   };
+
+  let hintToggle, result = eMD.currentHint,
+      hintBool,
+      resultCount = result.toString().length,
+      result1 = result.substr(0,resultCount / 2),
+      result2 = result.substr(resultCount / 2, resultCount);
+
+  if (eMD.currentHint === "" && eMD_l.gold > 0) {
+    hintToggle = eMD_l.gold + " GOLD";
+    hintBool = false;
+  } else {
+    if(result1 === ""){
+      hintToggle = eMD_l.gold + " GOLD";
+    } else {
+      hintToggle = result1 + " + " + result2;
+    }
+    hintBool = true;
+  }
+  hintOutput.type = "text";
+  hintOutput.readOnly = true;
+  hintOutput.placeholder = hintToggle;
+  hintOutput.className = "hintOutput";
+
+  hintBtn.innerHTML = "❓";
+  hintBtn.disabled = hintBool;
+  hintBtn.onclick = summonHint(hintBtn,hintOutput);
 
   musicBtn.innerHTML = "▶️";
   musicBtn.className = "musicBtn";
@@ -54,7 +82,7 @@ const appBuild = (eMD) => {
   };
 
   navBar.className = "navBar";
-  navBar.append(clearBtn, settings, musicBtn, stopBtn, refreshSideBarBtn);
+  navBar.append(clearBtn,settings,musicBtn,stopBtn,hintBtn,hintOutput,refreshSideBarBtn);
 
   sideBar.id = "sideBar";
 
@@ -190,7 +218,9 @@ const drop = (ev) => {
         if (eMD.kObj.length === 27) {
           add_letter("h");
         }
-
+        if (combination === eMD.currentHint) {
+          clearHintLog(eMD);
+        }
         commitSound(0);
 
         pollItems(combination, newKey);
@@ -218,12 +248,21 @@ const runSettPage = () => {
   var settPage = createEle("div"),
     soundFeature = createEle("div"),
     sndRange = createEle("input"),
+    musicFeature = createEle("div"),
+    musRange = createEle("input"),
     xOut = createEle("button");
+
+  musRange.type = "range";
+  musRange.min = 0;
+  musRange.max = .25;
+  musRange.step = 0.005;
+  musRange.value = eMD_l.musicVol;
+  musRange.onmouseup = updateMusicVolume(eMD_l, musRange);
 
   sndRange.type = "range";
   sndRange.min = 0;
   sndRange.max = .5;
-  sndRange.step = 0.0001;
+  sndRange.step = 0.005;
   sndRange.value = eMD_l.sound;
   sndRange.onmouseup = updateSoundVolume(eMD_l, sndRange);
 
@@ -235,8 +274,12 @@ const runSettPage = () => {
   soundFeature.className = "soundFeature";
   soundFeature.append(sndRange);
 
+  musicFeature.innerHTML = "<h2>MUSIC</h2>";
+  musicFeature.className = "musicFeature";
+  musicFeature.append(musRange);
+
   settPage.className = "settPage";
-  settPage.append(soundFeature, xOut);
+  settPage.append(soundFeature,musicFeature, xOut);
 
   body.append(settPage);
 
@@ -253,7 +296,13 @@ const updateSoundVolume = (eMD_l, sndRange) => {
     saveLS("eMD_legend", eMD_l);
   };
 };
-
+const updateMusicVolume = (eMD_l, musRange) => {
+  return function () {
+    mySong.volume = musRange.value;
+    eMD_l.musicVol = musRange.value;
+    saveLS("eMD_legend", eMD_l);
+  };
+};
 const refreshSideBarFunc = () => {
   sideBar.innerHTML = "";
 
@@ -378,6 +427,47 @@ const xOutFunc = (x, s) => {
   };
 };
 
+const clearHintLog = (eMD) => {
+  const eMD_l = parseLS("eMD_legend");
+
+  if(eMD_l.gold > 0) {
+    hintBtn.disabled = false;
+  }
+
+  hintOutput.value = "";
+  hintOutput.placeholder = eMD_l.gold + " GOLD";
+
+  eMD.currentHint = "";
+
+  saveLS("elementMergerData", eMD);
+};
+
+const summonHint = (hintBtn,hintOutput) => {
+  return function() {
+    hintBtn.id = "hintBtn";
+    hintBtn.disabled = true;
+
+     const eMD = parseLS("elementMergerData"),
+           eMD_l = parseLS("eMD_legend");
+
+     let rand = Math.floor((Math.random()*eMD.unkObj.length)),
+         result = eMD.unkObj[rand],
+         resultCount = result.toString().length,
+         result1 = result.substr(0,resultCount / 2),
+         result2 = result.substr(resultCount / 2, resultCount);
+
+     hintOutput.value = result1 + " + " + result2;
+     hintOutput.id = "hintOutput";
+
+     eMD_l.gold = eMD_l.gold - 1;
+
+     eMD.currentHint = result;
+
+     saveLS("eMD_legend",eMD_l);
+     saveLS("elementMergerData", eMD);
+  }
+};
+
 const pollItems = (x, y) => {
   for (var r = 0; r < eol.length; r++) {
     if (x === eol[r]) {
@@ -417,10 +507,10 @@ const commitMusic = (x) => {
   return function(){
   var eMD_l = parseLS("eMD_legend");
   
-
     mySong.volume = eMD_l.musicVol;
     mySong.currentTime = eMD_l.musicPos;
     mySong.autoplay = true;
+    mySong.id = "mySong";
     mySong.play();
 
     x.onclick = pauseMusic(x,mySong);
@@ -433,7 +523,6 @@ const commitSound = (x) => {
   let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
 
   mySound.volume = eMD_l.sound;
-  mySound.currentTime = eMD_l.musicPos;
   mySound.play();
 };
 

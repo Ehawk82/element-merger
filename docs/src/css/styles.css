@@ -22,35 +22,45 @@ body {
 .navBar {
   position: absolute;
   bottom: 0;
+  display: inline-flex;
 }
 .navBar button {
-  margin: 5px;
-  font-size: 3em;
+  margin: 8px;
+  height: 6vw;
+  width: 6vw;
+  font-size: 3vw;
 }
+
 .refreshSideBarBtn {
   position: fixed;
   right: 12vw;
 }
-
+.hintOutput {
+    display: block;
+    margin: auto;
+    height: 5vw;
+    width: 12vw;
+    cursor: default;
+    text-align: center;
+}
 .settPage {
   top: 100vh;
 }
 .settPage_full {
   top: 0;
 }
-.soundFeature {
-  position: absolute;
-  top:20vh;
-  height: 60vh;
+.soundFeature,.musicFeature {
+  position: relative;
+  height: 20vh;
   line-height: 30px;
-  left:20vw;
   width: 60vw;
+  margin: 10vh 20vw;
 }
 .xOut {
   position: absolute;
   top: 5px;
   right: 5px;
-  font-size: 3em;
+  font-size: 4vw;
 }
 /* ID */
 
@@ -152,7 +162,7 @@ input:focus::-ms-fill-upper {
 how to remove the virtical space around the range input in IE*/
 @supports (-ms-ime-align:auto) {
   /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-  input[type=range]..soundFeature input {
+  input[type=range] {
     margin: 0;
     /*Edge starts the margin from the thumb, not the track as other browsers do*/
   }
@@ -193,7 +203,7 @@ how to remove the virtical space around the range input in IE*/
   box-shadow: 0 0 2px inset black, 0 0 2px inset black;
   background: rgba(255, 255, 255, 1);
 }
-.soundFeature,.winPage,#sideBar,
+.musicFeature,.soundFeature,.winPage,#sideBar,
 .winPage_full,#sideBar div,
 #board div {
   text-align: center;
