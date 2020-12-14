@@ -16,7 +16,7 @@ const init = () => {
   appBuild(eMD);
 };
 
-const appBuild = (eMD) => {
+const appBuild = eMD => {
 
   var eMD_l = parseLS("eMD_legend");
 
@@ -40,7 +40,11 @@ const appBuild = (eMD) => {
       hintBool,
       resultCount = result.toString().length,
       result1 = result.substr(0,resultCount / 2),
-      result2 = result.substr(resultCount / 2, resultCount);
+      result2 = result.substr(resultCount / 2, resultCount),
+      result3a = result.substr(0,2),
+      result3b = result.substr(2,2),
+      result3c = result.substr(4,6),
+      sixResult = result3a + " + " + result3b + " + " + result3c;
 
   if (eMD.currentHint === "" && eMD_l.gold > 0) {
     hintToggle = eMD_l.gold + " GOLD";
@@ -49,22 +53,38 @@ const appBuild = (eMD) => {
     if(result1 === ""){
       hintToggle = eMD_l.gold + " GOLD";
     } else {
-      hintToggle = result1 + " + " + result2;
+      if (eMD.currentHint.length > 4) {
+        hintToggle = sixResult;
+      } else {
+        hintToggle = result1 + " + " + result2;
+      }
     }
     hintBool = true;
   }
+let textToggle,actionToggle;
+if (mySong.duration > 0 && !mySong.paused) {
+    textToggle = "⏸️";
+    actionToggle = pauseMusic(musicBtn);
+} else {
+    textToggle = "▶️";
+    actionToggle = commitMusic(musicBtn);
+    //Not playing...maybe paused, stopped or never played.
+
+}
+  console.log(mySong);
   hintOutput.type = "text";
   hintOutput.readOnly = true;
   hintOutput.placeholder = hintToggle;
   hintOutput.className = "hintOutput";
 
   hintBtn.innerHTML = "❓";
+  hintBtn.id = "hintBtn";
   hintBtn.disabled = hintBool;
   hintBtn.onclick = summonHint(hintBtn,hintOutput);
 
-  musicBtn.innerHTML = "▶️";
+  musicBtn.innerHTML = textToggle;
   musicBtn.className = "musicBtn";
-  musicBtn.onclick = commitMusic(musicBtn);
+  musicBtn.onclick = actionToggle;
 
   stopBtn.innerHTML = "⏹️";
   stopBtn.className = "stopBtn";
@@ -86,9 +106,9 @@ const appBuild = (eMD) => {
 
   sideBar.id = "sideBar";
 
-  board.ondrop = (event) => drop(event);
+  board.ondrop = event => drop(event);
   board.id = "board";
-  board.ondragover = (event) => allowDrop(event);
+  board.ondragover = event => allowDrop(event);
 
   body.append(board,navBar,sideBar);
   commitMusic();
@@ -102,7 +122,7 @@ const appBuild = (eMD) => {
     thingy.onmousedown = () => {
       return commitSound(5);
     };
-    thingy.ondrag = (event) => drag(event);
+    thingy.ondrag = event => drag(event);
 
     thingy.draggable = true;
     pollItems(eMD.kObj[i], thingy);
@@ -110,15 +130,17 @@ const appBuild = (eMD) => {
   }
 };
 
-const allowDrop = (ev) => {
+const allowDrop = ev => {
+
   ev.preventDefault();
 };
 
-const drag = (ev) => {
+const drag = ev => {
+
   globalFile = ev.target.className;
 };
 
-const drop = (ev) => {
+const drop = ev => {
   commitSound(1);
   var newItem = createEle("div");
 
@@ -222,7 +244,6 @@ const drop = (ev) => {
           clearHintLog(eMD);
         }
         commitSound(0);
-
         pollItems(combination, newKey);
 
         setTimeout(function () {
@@ -250,7 +271,12 @@ const runSettPage = () => {
     sndRange = createEle("input"),
     musicFeature = createEle("div"),
     musRange = createEle("input"),
+    clearLSbtn = createEle("button"),
     xOut = createEle("button");
+
+  clearLSbtn.innerHTML = "CLEAR DATA";
+  clearLSbtn.className = "clearLSbtn";
+  clearLSbtn.onclick = runDeleteWarning(clearLSbtn);
 
   musRange.type = "range";
   musRange.min = 0;
@@ -279,7 +305,7 @@ const runSettPage = () => {
   musicFeature.append(musRange);
 
   settPage.className = "settPage";
-  settPage.append(soundFeature,musicFeature, xOut);
+  settPage.append(soundFeature,musicFeature,clearLSbtn,xOut);
 
   body.append(settPage);
 
@@ -296,6 +322,7 @@ const updateSoundVolume = (eMD_l, sndRange) => {
     saveLS("eMD_legend", eMD_l);
   };
 };
+
 const updateMusicVolume = (eMD_l, musRange) => {
   return function () {
     mySong.volume = musRange.value;
@@ -303,6 +330,7 @@ const updateMusicVolume = (eMD_l, musRange) => {
     saveLS("eMD_legend", eMD_l);
   };
 };
+
 const refreshSideBarFunc = () => {
   sideBar.innerHTML = "";
 
@@ -354,7 +382,7 @@ const generateAlterItem = (ev, combination) => {
   board.appendChild(alterItem);
 };
 
-const add_letter = (x) => {
+const add_letter = x => {
   var eMD = parseLS("elementMergerData");
   let ary = eMD.kObj;
 
@@ -397,9 +425,7 @@ const completedAlert = () => {
   const reloadBtn = createEle("button");
 
   reloadBtn.innerHTML = "RESTART";
-  reloadBtn.onclick = () => {
-    return location.reload();
-  };
+  reloadBtn.onclick = restartProgram();
 
   winPage.append(title, msg, reloadBtn);
   winPage.className = "winPage";
@@ -427,7 +453,7 @@ const xOutFunc = (x, s) => {
   };
 };
 
-const clearHintLog = (eMD) => {
+const clearHintLog = eMD => {
   const eMD_l = parseLS("eMD_legend");
 
   if(eMD_l.gold > 0) {
@@ -454,9 +480,16 @@ const summonHint = (hintBtn,hintOutput) => {
          result = eMD.unkObj[rand],
          resultCount = result.toString().length,
          result1 = result.substr(0,resultCount / 2),
-         result2 = result.substr(resultCount / 2, resultCount);
-
-     hintOutput.value = result1 + " + " + result2;
+         result2 = result.substr(resultCount / 2, resultCount),
+         result3a = result.substr(0,2),
+         result3b = result.substr(2,2),
+         result3c = result.substr(4,6),
+         sixResult = result3a + " + " + result3b + " + " + result3c;
+     if (result.length > 4) {
+       hintOutput.placeholder = sixResult;
+     } else {
+       hintOutput.placeholder = result1 + " + " + result2;
+     }
      hintOutput.id = "hintOutput";
 
      eMD_l.gold = eMD_l.gold - 1;
@@ -476,7 +509,7 @@ const pollItems = (x, y) => {
   }
 };
 
-const pauseMusic = (x,mySong) => {
+const pauseMusic = x => {
   return function() {
     var eMD_l = parseLS("eMD_legend");
 
@@ -490,7 +523,8 @@ const pauseMusic = (x,mySong) => {
     mySong.pause();
   }
 };
-const stopMusic = (musicBtn) => {
+
+const stopMusic = musicBtn => {
   return function(){
     var eMD_l = parseLS("eMD_legend");
     musicBtn.innerHTML = "▶️";
@@ -503,7 +537,8 @@ const stopMusic = (musicBtn) => {
     mySong.pause();
   }
 };
-const commitMusic = (x) => {
+
+const commitMusic = x => {
   return function(){
   var eMD_l = parseLS("eMD_legend");
   
@@ -513,11 +548,12 @@ const commitMusic = (x) => {
     mySong.id = "mySong";
     mySong.play();
 
-    x.onclick = pauseMusic(x,mySong);
+    x.onclick = pauseMusic(x);
     x.innerHTML = "⏸️";
   };
 };
-const commitSound = (x) => {
+
+const commitSound = x => {
   var eMD_l = parseLS("eMD_legend");
 
   let mySound = new Audio("src/assets/sounds/" + appSounds[x]);
@@ -526,6 +562,61 @@ const commitSound = (x) => {
   mySound.play();
 };
 
+const runDeleteWarning = clearLSbtn => {
+  return function() {
+      clearLSbtn.disabled = true;
+      var warnPage = createEle("div"),
+          yesBtn = createEle("button"),
+          noBtn = createEle("button");
+
+      yesBtn.innerHTML = "YES";
+      yesBtn.onclick = answerYes();
+
+      noBtn.innerHTML = "NO";
+      noBtn.onclick = answerNo(warnPage,clearLSbtn);
+
+      warnPage.innerHTML = "<p>ARE YOU SURE YOU WOULD LIKE TO DELETE RECIPE STORAGE?</p>";
+      warnPage.className = "warnPage";
+      warnPage.append(yesBtn,noBtn);
+
+      body.append(warnPage);
+
+      setTimeout(function(){
+        makeFull(warnPage);
+      },1);
+  }
+};
+
+const answerYes = () => {
+  return function(){
+    removeLSitem("elementMergerData");
+    body.innerHTML = "";
+    setTimeout(function(){
+      init();
+    },100);
+  }
+};
+
+const answerNo = (warnPage,clearLSbtn) => {
+  return function() {
+     takeFull(warnPage);
+     clearLSbtn.disabled = false;
+     setTimeout(function() {
+       deleteThis(warnPage);
+     }, 600);
+  }
+};
+
+const restartProgram = () => {
+  return function(){
+    body.innerHTML = "";
+    setTimeout(function(){
+      init();
+    },100);
+  }
+};
+
 window.onload = function () {
+
   init();
 };

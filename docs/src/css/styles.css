@@ -54,13 +54,26 @@ body {
   height: 20vh;
   line-height: 30px;
   width: 60vw;
-  margin: 10vh 20vw;
+  margin: 5vh 20vw;
+}
+.clearLSbtn {
+  position: relative;
+  height: 20vh;
+  line-height: 30px;
+  width: 30vw;
+  margin: 5vh 20vw;
 }
 .xOut {
   position: absolute;
   top: 5px;
   right: 5px;
   font-size: 4vw;
+}
+.warnPage {
+  top:100vh;
+}
+.warnPage_full {
+  top:0;
 }
 /* ID */
 
@@ -175,6 +188,16 @@ how to remove the virtical space around the range input in IE*/
 
 
 /* MULTI */
+.warnPage,.warnPage_full {
+  transition: 500ms all;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 11;
+  left:0;
+}
+
 .settPage,
 .settPage_full {
   transition: 500ms all;

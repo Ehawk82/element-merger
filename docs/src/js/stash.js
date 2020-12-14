@@ -2,6 +2,7 @@
 var knownObjects = ["a", "b", "c", "d"];
 
 /* list of unknown elements */
+/*
 var unknownObjects = [
   "aa",
   "ab",
@@ -48,9 +49,9 @@ var unknownObjects = [
   "abac",
   "abacdf"
 ];
-
+*/
 /* shorter version of unknownObjects for testing */
-//var unknownObjects = ["aa","ab","ac","ad"];
+var unknownObjects = ["aa","ab","ac","ad"];
 
 /* end of line assertions */
 var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","dac","fac","gac","hac","abac"];
