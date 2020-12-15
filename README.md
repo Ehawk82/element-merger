@@ -6,28 +6,35 @@ A small, basic representation of the game "Doodle God" and "Alchemy 10" meant fo
 ## Requirements
 - Initial startup elements: 4
 - Total elements: 30'ish
-- [] DRY
-- 
+- [ ] DRY
+- [ ] All features completed
 
+<hr />
+![Progress](https://progress-bar.dev/63.6/)
+<hr />
 ## Features
 - [x] Drag/Drop
 - [x] Sounds
-  + [x] User has volume control 
-- [] Simple graphics
+  + [x] User has volume control
+  + [x] Optional: Music
+  	* [x] Music can play
+  	* [x] Music can pause/resume
+  	* [x] Music can stop/reset
+- [ ] Simple graphics
 - [x] User can clear board
 - [x] User can sort side-bar items
 - [x] Bad merges delete themselves
-  + "Could be a nice addition if we run a gif to show them explode or crumble when invoked"
+  + [ ] Optional: animated deletion
 - [x] Game detects 'end-of-line' elements
 - [x] Can detect when all combos are unlocked
-- [] Hints
-  + [] Button for 'hints'
-  + [] 'NUM' free hints per day
-  + [] Spend in-game "tokens" for hints
-  + [] Adds 'NUM' free "token" per day
-  + [] Pay a dollar for 'NUM' x2 tokens per day
-  + [] Membership for daily multiplier
-- [] touch screen
+- [ ] Hints
+  + [x] Button for 'hints'
+  + [ ] 'NUM' free hints per day
+  + [x] Spend in-game "tokens" for hints
+  + [ ] Adds 'NUM' free "token" per day
+  + [ ] Pay a dollar for 'NUM' x2 tokens per day
+  + [ ] Membership for daily multiplier
+- [ ] touch screen
 
 #### Tech-Tree(not final)
 [Basic tree](https://stonecypher.github.io/jssm-viz-demo/graph_explorer.html?s=LYQwxgFglgdgpgfRiYcAEGMC40CIBKcYUADugCoBOccuA3AFCiSyIgCuALhAPaWY5cAKRABnHjDQBxSiABeUEDB70m4aPAQAbKGDgxR6NDgCyASXKNmGxGB7BUMTtjwBBNACMxutFp48AazQQZ250TmpaK3VWbSUAc3YQePQcfWiWTQA3OEpRKAkXAEYAOgAGcsYAM1EtBBy8gslMYvLKhgZRThBKTgQukLhRFuM0AG0AGR4QABM0QkNOAF1GfRn+7s4hkZcxlY6GAHoAKjQZuCqOLU5RLAYSLSVOABolKFAtZ853uC--LQYx0OHROaAeTzQQPujycaAAvAA+NBVSjsKDORFoHLxeJQdCYmBcRhHU5vD6Q4FkkBaeFIlhgAL6WloOwAd2ZHnY8WJoO+qApTFgXHxSN47H4mJmIAAnszgBJuMTgEKtmgALRIsYotHOemMySQcUwfYMMX8DXjbG49BstDKrRaE1S2UWsaE5yc+JoHg5Y0806cf4CwM8GmYw2USSY+1hpE+9JAA/?target=_blank)
