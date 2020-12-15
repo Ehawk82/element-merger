@@ -68,6 +68,8 @@ Tech-Tree notes:
 | cd | c | d |
 | cc | c | c |
 | dd | d | d |
+| bac | b | ac |
+| abac | ab | ac |
 
 
 
