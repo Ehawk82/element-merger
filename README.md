@@ -65,9 +65,9 @@ Tech-Tree notes:
 | ac | a | c |
 | ab | a | b |
 | bc | b | c |
-| cd || c | d |
-| cc || c | c |
-| dd || d | d |
+| cd | c | d |
+| cc | c | c |
+| dd | d | d |
 
 
 
