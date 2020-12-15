@@ -78,8 +78,8 @@ var appSounds = [
 
 /* these are settings that are not meant to be deleted */
 var emd_legend = {
-  gold: 5,
-  sound: 0.25,
-  musicVol: 0.125,
+  gold: 50,
+  sound: 0,
+  musicVol: 0,
   musicPos: 0
 };

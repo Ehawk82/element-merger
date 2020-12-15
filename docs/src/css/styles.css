@@ -10,92 +10,6 @@ body {
 body {
   overflow-y: hidden;
 }
-/* CLASS */
-
-.winPage {
-  top: 100vh;
-}
-.winPage_full {
-  top: 0;
-}
-
-.navBar {
-  position: absolute;
-  bottom: 0;
-  display: inline-flex;
-}
-.navBar button {
-  margin: 8px;
-  height: 6vw;
-  width: 6vw;
-  font-size: 3vw;
-}
-
-.refreshSideBarBtn {
-  position: fixed;
-  right: 12vw;
-}
-.hintOutput {
-    display: block;
-    margin: auto;
-    height: 5vw;
-    width: 12vw;
-    cursor: default;
-    text-align: center;
-}
-.settPage {
-  top: 100vh;
-}
-.settPage_full {
-  top: 0;
-}
-.soundFeature,.musicFeature {
-  position: relative;
-  height: 20vh;
-  line-height: 30px;
-  width: 60vw;
-  margin: 5vh 20vw;
-}
-.clearLSbtn {
-  position: relative;
-  height: 20vh;
-  line-height: 30px;
-  width: 30vw;
-  margin: 5vh 20vw;
-}
-.xOut {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: 4vw;
-}
-.warnPage {
-  top:100vh;
-}
-.warnPage_full {
-  top:0;
-}
-/* ID */
-
-#board {
-  width: 88vw;
-  height: 100vh;
-}
-
-#board div {
-}
-
-#sideBar {
-  left: 88vw;
-  width: 12vw;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-#sideBar div {
-  transition: 1s all;
-  margin: 10px 0;
-}
 
 input {
   width: 100%;
@@ -181,6 +95,102 @@ how to remove the virtical space around the range input in IE*/
   }
 }
 
+/* CLASS */
+.winPage {
+  top: 100vh;
+}
+
+.winPage_full {
+  top: 0;
+}
+
+.navBar {
+  position: absolute;
+  bottom: 0;
+  display: inline-flex;
+}
+
+.navBar button {
+  margin: 8px;
+  height: 6vw;
+  width: 6vw;
+  font-size: 3vw;
+}
+
+.refreshSideBarBtn {
+  position: fixed;
+  right: 12vw;
+}
+
+.hintOutput {
+    display: block;
+    margin: auto;
+    height: 5vw;
+    width: 12vw;
+    cursor: default;
+    text-align: center;
+}
+
+.settPage {
+  top: 100vh;
+}
+
+.settPage_full {
+  top: 0;
+}
+
+.soundFeature,.musicFeature {
+  position: relative;
+  height: 20vh;
+  line-height: 30px;
+  width: 60vw;
+  margin: 5vh 20vw;
+}
+
+.clearLSbtn {
+  position: relative;
+  height: 20vh;
+  line-height: 30px;
+  width: 30vw;
+  margin: 5vh 20vw;
+}
+
+.xOut {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 4vw;
+}
+
+.warnPage {
+  top:100vh;
+}
+
+.warnPage_full {
+  top:0;
+}
+
+/* ID */
+#board {
+  width: 88vw;
+  height: 100vh;
+}
+
+#board div {
+}
+
+#sideBar {
+  left: 88vw;
+  width: 12vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+#sideBar div {
+  transition: 1s all;
+  margin: 10px 0;
+
+}
 
 .soundFeature input:hover {
   opacity: 1;
@@ -225,12 +235,15 @@ how to remove the virtical space around the range input in IE*/
   background: white;
   box-shadow: 0 0 2px inset black, 0 0 2px inset black;
   background: rgba(255, 255, 255, 1);
+  touch-action: none;
 }
+
 .musicFeature,.soundFeature,.winPage,#sideBar,
 .winPage_full,#sideBar div,
-#board div {
+#board div,.navBar button {
   text-align: center;
 }
+
 #sideBar,
 #board {
   position: absolute;
@@ -241,6 +254,7 @@ how to remove the virtical space around the range input in IE*/
 .xOut {
   cursor: pointer;
 }
+
 /* KEYFRAMES */
 
 /* MEDIA QUERIES */

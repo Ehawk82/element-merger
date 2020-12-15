@@ -1,6 +1,8 @@
 let globalFile;
 const mySong = new Audio("src/assets/music/mu1.flac");
 
+mySong.loop = true;
+
 const init = () => {
   var eMD = parseLS("elementMergerData"),
     eMD_l = parseLS("eMD_legend");
@@ -61,17 +63,18 @@ const appBuild = eMD => {
     }
     hintBool = true;
   }
-let textToggle,actionToggle;
-if (mySong.duration > 0 && !mySong.paused) {
-    textToggle = "⏸️";
-    actionToggle = pauseMusic(musicBtn);
-} else {
-    textToggle = "▶️";
-    actionToggle = commitMusic(musicBtn);
-    //Not playing...maybe paused, stopped or never played.
+  let textToggle,actionToggle;
 
-}
-  console.log(mySong);
+  if (mySong.duration > 0 && !mySong.paused) {
+      textToggle = "⏸️";
+      actionToggle = pauseMusic(musicBtn);
+  } else {
+      textToggle = "▶️";
+      actionToggle = commitMusic(musicBtn);
+      //Not playing...maybe paused, stopped or never played.
+
+  }
+
   hintOutput.type = "text";
   hintOutput.readOnly = true;
   hintOutput.placeholder = hintToggle;
@@ -119,13 +122,23 @@ if (mySong.duration > 0 && !mySong.paused) {
     thingy.innerHTML = eMD.kObj[i];
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
-    thingy.onmousedown = () => {
-      return commitSound(5);
+    thingy.onclick = () => {
+      return commitSound(5)
     };
     thingy.ondrag = event => drag(event);
+    /* TODO: fix the touch screen crap
+    thingy.addEventListener('touchmove', function(event) {
+      return drag(event);
+    },{ passive: true });
 
+    thingy.addEventListener('touchend', function(event) {
+      return touchDrop(event);
+    },{ passive: true });
+    */
     thingy.draggable = true;
+
     pollItems(eMD.kObj[i], thingy);
+
     sideBar.append(thingy);
   }
 };
@@ -138,6 +151,7 @@ const allowDrop = ev => {
 const drag = ev => {
 
   globalFile = ev.target.className;
+
 };
 
 const drop = ev => {
@@ -150,7 +164,7 @@ const drop = ev => {
   newItem.style.position = "absolute";
   newItem.style.left = ev.x - 50 + "px";
   newItem.style.top = ev.y - 50 + "px";
-  newItem.onmousedown = () => {
+  newItem.onclick = () => {
     return commitSound(5);
   };
   newItem.ondrag = (event) => drag(event);
@@ -166,7 +180,7 @@ const drop = ev => {
     var eMD = parseLS("elementMergerData");
 
     var combination = newItem.parentNode.className + newItem.className,
-      comboMixed = newItem.className + newItem.parentNode.className;
+        comboMixed = newItem.className + newItem.parentNode.className;
 
     newItem.parentNode.remove();
 
@@ -220,7 +234,7 @@ const drop = ev => {
         newKey.style.cursor = "grab";
         newKey.style.opacity = "0.2";
         newKey.className = combination;
-        newKey.onmousedown = () => {
+        newKey.onclick = () => {
           return commitSound(5);
         };
         newKey.ondrag = (event) => drag(event);
@@ -342,7 +356,7 @@ const refreshSideBarFunc = () => {
     thingy.innerHTML = eMD.kObj[i];
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
-    thingy.onmousedown = () => {
+    thingy.onclick = () => {
       return commitSound(5);
     };
     thingy.ondrag = (event) => drag(event);
@@ -366,9 +380,9 @@ const generateAlterItem = (ev, combination) => {
   alterItem.style.cursor = "grab";
   alterItem.className = combination;
   alterItem.style.position = "absolute";
-  alterItem.style.left = ev.x - 50 + "px";
-  alterItem.style.top = ev.y - 50 + "px";
-  alterItem.onmousedown = () => {
+  alterItem.style.left = ev.clientX - 50 + "px";
+  alterItem.style.top = ev.clientY - 50 + "px";
+  alterItem.onclick = () => {
     return commitSound(5);
   };
   alterItem.ondrag = (event) => drag(event);
@@ -397,7 +411,7 @@ const add_letter = x => {
   newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
   newTopKey.style.cursor = "grab";
   newTopKey.style.opacity = "0.2";
-  newTopKey.onmousedown = () => {
+  newTopKey.onclick = () => {
     return commitSound(5);
   };
   newTopKey.ondrag = (event) => drag(event);
