@@ -27,8 +27,11 @@ A small, basic representation of the game "Doodle God" and "Alchemy 10" meant fo
   + [] Pay a dollar for 'NUM' x2 tokens per day
   + [] Membership for daily multiplier
 
-## Tech-Tree(not final)
+#### Tech-Tree(not final)
 [Basic tree](https://stonecypher.github.io/jssm-viz-demo/graph_explorer.html?s=LYQwxgFglgdgpgfRiYcAEGMC40CIBKcYUADugCoBOccuA3AFCiSyIgCuALhAPaWY5cAZQhwANgCMAnmgCiANziUpZSgGceMNAB52apQAE4ADxQkxcAHRgewAHz0m4aPARioYODH3Y0AWQBJckZmF0QbYFQYTl9cACk9GJA0AEd2DwBrNBMzCzQeADM0XgB3NG44HxBqNBLKKE5OL0dQ1jcQGABzdhBO9BwvEOc2xXUoTV8ARksABlnGArUxBFG1ca1MKdn5hgY1TmrOBH2QJrVNtBwAbQAZHhAAEzRCfU4AXUYvB+ODs4vfK4fXYMAD0ACo0A84AUOGJOGosAxzB1OAAaDpQUBiVGcTFwHE8HhiBhgkG7cFoZHRNCkpFiFFoAC8djQBUo6RizLQik6nSg6C5MC4jFBEIxWJpZPFIDETJZLDAGS8crQNjKXIk7E6IopuNQkqYsC4ApZvHY-C5DxAMi5wE03BFwCNTTQAFoWWyOSFneh3aroIrBoahS6-ZBzTARWb+H6eXy4Ixo275TwSomeObk2gnWIxCKrTI-SHGAWs5rtQxS36eIpI+SIZxCbLaY2iSrw5QtLaoLmVTXBkA)
+
+[template tree(for demo page)](https://stonecypher.github.io/jssm-viz-demo/graph_explorer.html?s=LYQwxgFglgdgpgfRiYcAEGMC40CIAqcwADgDYgAu6+ATnHLgNwBQoksiIArhRAPY1MOXACkQAZz4w0AcRogAXlBAw+TVuGjwEpKGDgxx6NDgCyASXws2WxGD7BUMCtjwBBNFRLkqnuui4jABM0KTQgoj40YhAAcwZrTQ4dFViuOPQcA0T2bQA3OBpxKDCTNABGADoABhqWADNxUgQCopLpTFcq2uqWZnEKEBoKBAHKOHFOsoBtABk+EBCAJQm4CgBdFgMg0cGqSamZzeZmEDQAWgA+NGmQO7O7tBAAIyewJ5CQeqfYp4gn8BoZ6Al4g4FgIL1Y6vK43Z7w14vIGvZ7vZ4hZ7fZ6-Z7-cFPfGgiFQljvWHTMCU96A1FoSl0kJgb5gX6QAFowFgQFBQH1QGxQEQMHC4nHELkoKSz4YxkhSXhb5BX5Bf486ngyHHb7k+q675fIHMxXfXVoeq-er-Pnq8Cali-cmxJ2-OJA1nKi2-J1oWL-AVgY7-ckQEP-EB4-5slVmv3-ENoIUBxhAA)
+
 
 ### Tech-Tree notes:
 - Each 'type' of item has 4 tiers of evolution.
