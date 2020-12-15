@@ -10,7 +10,9 @@ A small, basic representation of the game "Doodle God" and "Alchemy 10" meant fo
 - [ ] All features completed
 
 <hr />
+
 ![Progress](https://progress-bar.dev/63/)
+
 <hr />
 ## Features
 - [x] Drag/Drop
