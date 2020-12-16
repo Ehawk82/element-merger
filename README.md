@@ -51,6 +51,16 @@ A small, basic representation of the game "Doodle God" and "Alchemy 10" meant fo
 
 ### [template tree(for demo page)](https://stonecypher.github.io/jssm-viz-demo/graph_explorer.html?s=LYQwxgFglgdgpgfRiYcAEGMC40CIAqcwADgDYgAu6+ATnHLgNwBQoksiIArhRAPY1MOXACkQAZz4w0AcRogAXlBAw+TVuGjwEpKGDgxx6NDgCyASXws2WxGD7BUMCtjwBBNFRLkqnuui4jABM0KTQgoj40YhAAcwZrTQ4dFViuOPQcA0T2bQA3OBpxKDCTNABGADoABhqWADNxUgQCopLpTFcq2uqWZnEKEBoKBAHKOHFOsoBtABk+EBCAJQm4CgBdFgMg0cGqSamZzeZmEDQAWgA+NGmQO7O7tBAAIyewJ5CQeqfYp4gn8BoZ6Al4g4FgIL1Y6vK43Z7w14vIGvZ7vZ4hZ7fZ6-Z7-cFPfGgiFQljvWHTMCU96A1FoSl0kJgb5gX6QAFowFgQFBQH1QGxQEQMHC4nHELkoKSz4YxkhSXhb5BX5Bf486ngyHHb7k+q675fIHMxXfXVoeq-er-Pnq8Cali-cmxJ2-OJA1nKi2-J1oWL-AVgY7-ckQEP-EB4-5slVmv3-ENoIUBxhAA)
 
+|  abc  |   a   |   b   |   c   |   d   |   f   |   g   |   h   |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|   a   |   aa  |   ab  |   ac  |   ad  |   af  |   ag  |   ah  |
+|   b   |   ab  |   bb  |   bc  |   bd  |   bf  |   bg  |   bh  |
+|   c   |   ac  |   bc  |   cc  |   cd  |   cf  |   cg  |   ch  |
+|   d   |   ad  |   bd  |   cd  |   dd  |   df  |   dg  |   dh  |
+|   f   |   af  |   bf  |   cf  |   df  |   ff  |   fg  |   fh  |
+|   g   |   ag  |   bg  |   cg  |   dg  |   fg  |   gg  |   gh  |
+|   h   |   ah  |   bh  |   ch  |   dh  |   fh  |   gh  |   hh  |
+
 <hr />
 
 ## Tech-Tree notes:
