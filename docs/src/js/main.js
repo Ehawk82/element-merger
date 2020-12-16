@@ -122,7 +122,7 @@ const appBuild = eMD => {
     thingy.innerHTML = eMD.kObj[i];
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
-    thingy.onclick = () => {
+    thingy.onmousedown = () => {
       return commitSound(5)
     };
     thingy.ondrag = event => drag(event);
@@ -164,7 +164,7 @@ const drop = ev => {
   newItem.style.position = "absolute";
   newItem.style.left = ev.x - 50 + "px";
   newItem.style.top = ev.y - 50 + "px";
-  newItem.onclick = () => {
+  newItem.onmousedown = () => {
     return commitSound(5);
   };
   newItem.ondrag = (event) => drag(event);
@@ -382,7 +382,7 @@ const generateAlterItem = (ev, combination) => {
   alterItem.style.position = "absolute";
   alterItem.style.left = ev.clientX - 50 + "px";
   alterItem.style.top = ev.clientY - 50 + "px";
-  alterItem.onclick = () => {
+  alterItem.onmousedown = () => {
     return commitSound(5);
   };
   alterItem.ondrag = (event) => drag(event);
@@ -589,7 +589,7 @@ const runDeleteWarning = clearLSbtn => {
       noBtn.innerHTML = "NO";
       noBtn.onclick = answerNo(warnPage,clearLSbtn);
 
-      warnPage.innerHTML = "<p>ARE YOU SURE YOU WOULD LIKE TO DELETE RECIPE STORAGE?</p>";
+      warnPage.innerHTML = "<p>ARE YOU SURE YOU WOULD LIKE TO DELETE THE RECIPE LOG?</p>";
       warnPage.className = "warnPage";
       warnPage.append(yesBtn,noBtn);
 
