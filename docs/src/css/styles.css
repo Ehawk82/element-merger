@@ -177,6 +177,8 @@ how to remove the virtical space around the range input in IE*/
 }
 
 #board div {
+  color: transparent;
+  background-size:  auto 100% !important;
 }
 
 #sideBar {
@@ -189,6 +191,9 @@ how to remove the virtical space around the range input in IE*/
 #sideBar div {
   transition: 1s all;
   margin: 10px 0;
+  color: transparent;
+  background-position: center !important;
+  background-size:  auto 100% !important;
 
 }
 
@@ -247,9 +252,6 @@ how to remove the virtical space around the range input in IE*/
 #board div {
   line-height: 9vw;
   width: 9vw;
-  background: white;
-  box-shadow: 0 0 2px inset black, 0 0 2px inset black;
-  background: rgba(255, 255, 255, 1);
   cursor: grab !important;
 }
 

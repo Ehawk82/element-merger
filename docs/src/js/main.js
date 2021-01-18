@@ -120,6 +120,7 @@ const appBuild = eMD => {
     var thingy = createEle("div");
 
     thingy.innerHTML = eMD.kObj[i];
+    thingy.style.backgroundImage = "url(../docs/src/assets/images/" + eMD.kObj[i] + ".png)";
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
     thingy.onmousedown = () => {
@@ -159,6 +160,7 @@ const drop = ev => {
   var newItem = createEle("div");
 
   newItem.innerHTML = globalFile;
+  newItem.style.backgroundImage = "url(../docs/src/assets/images/" + globalFile + ".png)";
   newItem.style.cursor = "grab";
   newItem.className = globalFile;
   newItem.style.position = "absolute";
@@ -230,6 +232,7 @@ const drop = ev => {
         var newKey = createEle("div");
 
         newKey.innerHTML = combination;
+        newKey.style.backgroundImage = "url(../docs/src/assets/images/" + combination + ".png)";
         newKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
         newKey.style.cursor = "grab";
         newKey.style.opacity = "0.2";
@@ -262,7 +265,7 @@ const drop = ev => {
 
         setTimeout(function () {
           newKey.style.opacity = "1";
-          newKey.style.backgroundColor = "white";
+          newKey.style.backgroundColor = "transparent";
 
           if (eMD.unkObj.length === 0) {
             completedAlert();
@@ -354,6 +357,7 @@ const refreshSideBarFunc = () => {
     var thingy = createEle("div");
 
     thingy.innerHTML = eMD.kObj[i];
+    thingy.style.backgroundImage = "url(../docs/src/assets/images/" + eMD.kObj[i] + ".png)";
     thingy.style.cursor = "grab";
     thingy.className = eMD.kObj[i];
     thingy.onclick = () => {
@@ -377,6 +381,7 @@ const generateAlterItem = (ev, combination) => {
   var alterItem = createEle("div");
 
   alterItem.innerHTML = combination;
+  alterItem.style.backgroundImage = "url(../docs/src/assets/images/" + combination + ".png)";
   alterItem.style.cursor = "grab";
   alterItem.className = combination;
   alterItem.style.position = "absolute";
@@ -408,6 +413,7 @@ const add_letter = x => {
 
   newTopKey.className = x;
   newTopKey.innerHTML = x;
+  newTopKey.style.backgroundImage = "url(../docs/src/assets/images/" + x + ".png)";
   newTopKey.style.backgroundColor = "rgba(8, 166, 84, 0.52)";
   newTopKey.style.cursor = "grab";
   newTopKey.style.opacity = "0.2";
@@ -422,7 +428,7 @@ const add_letter = x => {
 
   setTimeout(function () {
     newTopKey.style.opacity = "1";
-    newTopKey.style.backgroundColor = "white";
+    newTopKey.style.backgroundColor = "transparent";
     commitSound(6);
   }, 200);
 };
@@ -633,4 +639,5 @@ const restartProgram = () => {
 window.onload = function () {
 
   init();
+  
 };

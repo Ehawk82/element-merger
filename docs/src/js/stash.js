@@ -51,11 +51,11 @@ var unknownObjects = [
 ];
 */
 /* shorter version of unknownObjects for testing */
-var unknownObjects = ["aa","ab","ac","ad"];
+var unknownObjects = ["ac","acc","acccc","bc","bcc","bcccc","cc","cccc","cccccccc","ccccacc"];
 
 /* end of line assertions */
-var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","dac","fac","gac","hac","abac"];
-
+//var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","dac","fac","gac","hac","abac"];
+var eol = [];
 /* template summoned by init on first load */
 var userdata = {
   kObj: knownObjects,
