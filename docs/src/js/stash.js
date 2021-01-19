@@ -2,56 +2,7 @@
 var knownObjects = ["a", "b", "c", "d"];
 
 /* list of unknown elements */
-/*
-var unknownObjects = [
-  "aa",
-  "ab",
-  "ac",
-  "ad",
-  "af",
-  "ah",
-  "ag",
-  "bb",
-  "bc",
-  "bd",
-  "bf",
-  "bg",
-  "bh",
-  "cc",
-  "cd",
-  "cf",
-  "cg",
-  "ch",
-  "dd",
-  "df",
-  "dg",
-  "dh",
-  "ff",
-  "fg",
-  "fh",
-  "gg",
-  "gh",
-  "hh",
-  "bac",
-  "aac",
-  "cac",
-  "dac",
-  "fac",
-  "gac",
-  "hac",
-  "aaaa",
-  "bbbb",
-  "cccc",
-  "dddd",
-  "ffff",
-  "gggg",
-  "hhhh",
-  "abac",
-  "abacdf"
-];
-*/
-/* shorter version of unknownObjects for testing */
-var unknownObjects = ["ac","acc","acccc","bc","bcc","bcccc","cc","cccc","cccccccc","ccccacc"];
+var unknownObjects = ["ac","acc","acccc","bc","bcc","bcccc","cc","ccac","ccccac","ccccccccac","ccccccccacc","cccc","cccccccc","ccccacc","cacccc","ccacccc","ccccacccc","ccccccccacccc"];
 
 /* end of line assertions */
 //var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","dac","fac","gac","hac","abac"];
