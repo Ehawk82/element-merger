@@ -28,7 +28,7 @@ const appBuild = eMD => {
     musicBtn = createEle("button"),
     stopBtn = createEle("button"),
     clearBtn = createEle("button"),
-    hintOutput = createEle("input"),
+    hintOutput = createEle("div"),
     hintBtn = createEle("button"),
     refreshSideBarBtn = createEle("button"),
     settings = createEle("button");
@@ -40,26 +40,16 @@ const appBuild = eMD => {
 
   let hintToggle, result = eMD.currentHint,
       hintBool,
-      resultCount = result.toString().length,
-      result1 = result.substr(0,resultCount / 2),
-      result2 = result.substr(resultCount / 2, resultCount),
-      result3a = result.substr(0,2),
-      result3b = result.substr(2,2),
-      result3c = result.substr(4,6),
-      sixResult = result3a + " + " + result3b + " + " + result3c;
+      resultCount = result.toString().length;
 
   if (eMD.currentHint === "" && eMD_l.gold > 0) {
     hintToggle = eMD_l.gold + " GOLD";
     hintBool = false;
   } else {
-    if(result1 === ""){
+    if(result === ""){
       hintToggle = eMD_l.gold + " GOLD";
     } else {
-      if (eMD.currentHint.length > 4) {
-        hintToggle = sixResult;
-      } else {
-        hintToggle = result1 + " + " + result2;
-      }
+      hintToggle = "<img src='src/assets/images/" + result + ".png' />";
     }
     hintBool = true;
   }
@@ -72,12 +62,10 @@ const appBuild = eMD => {
       textToggle = "▶️";
       actionToggle = commitMusic(musicBtn);
       //Not playing...maybe paused, stopped or never played.
-
   }
 
-  hintOutput.type = "text";
-  hintOutput.readOnly = true;
-  hintOutput.placeholder = hintToggle;
+
+  hintOutput.innerHTML = hintToggle;
   hintOutput.className = "hintOutput";
 
   hintBtn.innerHTML = "❓";
@@ -352,8 +340,11 @@ const refreshSideBarFunc = () => {
   sideBar.innerHTML = "";
 
   var eMD = parseLS("elementMergerData");
+  var myArray = eMD.kObj;
 
-  for (var i = 0; i < eMD.kObj.length; i++) {
+  myArray.sort();
+
+  for (var i = 0; i < myArray.length; i++) {
     var thingy = createEle("div");
 
     thingy.innerHTML = eMD.kObj[i];
@@ -369,6 +360,8 @@ const refreshSideBarFunc = () => {
 
     sideBar.append(thingy);
   }
+
+  saveLS("elementMergerData", eMD);
   commitSound(7);
 };
 
@@ -474,14 +467,14 @@ const xOutFunc = (x, s) => {
 };
 
 const clearHintLog = eMD => {
-  const eMD_l = parseLS("eMD_legend");
+  const eMD_l = parseLS("eMD_legend"),
+        hintOutput = bySel(".hintOutput");
 
   if(eMD_l.gold > 0) {
     hintBtn.disabled = false;
   }
 
-  hintOutput.value = "";
-  hintOutput.placeholder = eMD_l.gold + " GOLD";
+  hintOutput.innerHTML = "";
 
   eMD.currentHint = "";
 
@@ -497,20 +490,9 @@ const summonHint = (hintBtn,hintOutput) => {
            eMD_l = parseLS("eMD_legend");
 
      let rand = Math.floor((Math.random()*eMD.unkObj.length)),
-         result = eMD.unkObj[rand],
-         resultCount = result.toString().length,
-         result1 = result.substr(0,resultCount / 2),
-         result2 = result.substr(resultCount / 2, resultCount),
-         result3a = result.substr(0,2),
-         result3b = result.substr(2,2),
-         result3c = result.substr(4,6),
-         sixResult = result3a + " + " + result3b + " + " + result3c;
-     if (result.length > 4) {
-       hintOutput.placeholder = sixResult;
-     } else {
-       hintOutput.placeholder = result1 + " + " + result2;
-     }
-     hintOutput.id = "hintOutput";
+         result = eMD.unkObj[rand];
+
+     hintOutput.innerHTML = "<img src='src/assets/images/" + result + ".png' />";
 
      eMD_l.gold = eMD_l.gold - 1;
 

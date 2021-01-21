@@ -96,6 +96,9 @@ how to remove the virtical space around the range input in IE*/
 }
 
 /* CLASS */
+
+
+
 .winPage {
   top: 100vh;
 }
@@ -125,12 +128,21 @@ how to remove the virtical space around the range input in IE*/
 .hintOutput {
     display: block;
     margin: auto;
-    height: 5vw;
-    width: 12vw;
+    height: 75px;
+    width: -webkit-fill-available !important;
     cursor: default;
     text-align: center;
 }
-
+.hintOutput img {
+  width: 75px;
+  height: 75px;
+  background-position: center !important;
+  background-size:  auto 100% !important;
+}
+.hintOutput span {
+  margin:auto 0;
+  font-size: xxx-large;
+}
 .settPage {
   top: 100vh;
 }

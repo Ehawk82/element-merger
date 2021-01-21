@@ -5,7 +5,7 @@ var knownObjects = ["a", "b", "c", "d"];
 var unknownObjects = [
   "ac","acc","acccc",
   "bc","bcc","bcccc",
-  "cc","ccac","ccccac","ccccccccac","ccccccccacc","cccc","cccccccc","ccccacc","cacccc","ccacccc","ccccacccc","ccccccccacccc"
+  "cc","acd","cacd","ccacd","ccccccccacc","cccc","cccccccc","ccccacc","cacccc","ccacccc","ccccacccc","ccccccccacccc"
 ];
 
 /* end of line assertions */
