@@ -2,10 +2,13 @@
 var knownObjects = ["a", "b", "c", "d"];
 
 /* list of unknown elements */
-var unknownObjects = ["ac","acc","acccc","bc","bcc","bcccc","cc","ccac","ccccac","ccccccccac","ccccccccacc","cccc","cccccccc","ccccacc","cacccc","ccacccc","ccccacccc","ccccccccacccc"];
+var unknownObjects = [
+  "ac","acc","acccc",
+  "bc","bcc","bcccc",
+  "cc","ccac","ccccac","ccccccccac","ccccccccacc","cccc","cccccccc","ccccacc","cacccc","ccacccc","ccccacccc","ccccccccacccc"
+];
 
 /* end of line assertions */
-//var eol = ["aaaa","bbbb","cccc","dddd","ffff","gggg","hhhh","aac","bac","cac","dac","fac","gac","hac","abac"];
 var eol = [];
 /* template summoned by init on first load */
 var userdata = {
